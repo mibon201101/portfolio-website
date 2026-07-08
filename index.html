@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio website for Isfaq Hossain Ibon, CSE student at United International University."
+    />
+    <title>Isfaq Hossain Ibon | Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary navigation">
+        <a class="logo" href="#home" aria-label="Go to home section">IHI</a>
+        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li>
+            <!-- Put your resume PDF inside assets and name it resume.pdf -->
+            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero section">
+        <div class="hero-content">
+          <p class="eyebrow">Personal Portfolio</p>
+          <h1>Isfaq Hossain Ibon</h1>
+          <p class="title">CSE Student | Aspiring Web Developer</p>
+          <p class="university">United International University</p>
+          <p class="hero-text">
+            I am a CSE student at United International University with an interest in web
+            development, software projects, and machine learning. I enjoy building practical
+            systems, learning new technologies, and solving real-world problems.
+          </p>
+          <div class="button-group">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <!-- Put your resume PDF inside assets and name it resume.pdf -->
+            <a
+              class="btn secondary"
+              href="assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+            <a class="btn outline" href="#contact">Contact</a>
+          </div>
+          <div class="social-actions" aria-label="Portfolio links">
+            <a
+              class="btn small outline"
+              href="https://github.com/mibon201101"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <!-- Put your resume PDF inside assets and name it resume.pdf -->
+            <a
+              class="btn small outline"
+              href="assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <!-- Put your professional profile photo inside assets and name it profile.png -->
+          <img src="assets/profile.png" alt="Professional profile photo of Isfaq Hossain Ibon" />
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="section-heading">
+          <p class="eyebrow">About Me</p>
+          <h2>Focused on practical learning and real development work.</h2>
+        </div>
+        <div class="about-panel">
+          <p>
+            I am a Computer Science and Engineering student at United International
+            University. I am currently improving my skills in web development, programming,
+            and machine learning through practical projects. I enjoy learning new
+            technologies and building systems that solve real problems.
+          </p>
+          <p>
+            A fast learner with strong adaptability, able to quickly learn new technologies
+            and contribute in real development environments.
+          </p>
+        </div>
+      </section>
+
+      <section id="skills" class="section skills">
+        <div class="section-heading">
+          <p class="eyebrow">Skills</p>
+          <h2>Technical skills and strengths.</h2>
+          <p>
+            My skills include core web development tools, basic knowledge of additional
+            programming technologies, and personal strengths that help me learn, adapt, and
+            contribute effectively.
+          </p>
+        </div>
+        <div class="skills-layout">
+          <article class="skills-card">
+            <h3>Technical Skills</h3>
+            <div class="skill-group">
+              <h4>Core Technical Skills</h4>
+              <div class="skills-badges core-skills" aria-label="Core technical skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Git</span>
+                <span>GitHub</span>
+                <span>Responsive Web Design</span>
+                <span>MySQL</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h4>Familiar With / Basic Knowledge</h4>
+              <div class="skills-badges secondary-skills" aria-label="Familiar technologies">
+                <span>Python</span>
+                <span>C</span>
+                <span>C++</span>
+                <span>Java</span>
+                <span>PHP</span>
+                <span>Machine Learning Basics</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="skills-card">
+            <h3>Soft Skills / Strengths</h3>
+            <div class="skills-badges strength-skills" aria-label="Soft skills and strengths">
+              <span>Fast Learner</span>
+              <span>Strong Adaptability</span>
+              <span>Problem Solving</span>
+              <span>Team Collaboration</span>
+              <span>Communication</span>
+              <span>Willingness to Learn New Technologies</span>
+              <span>Ability to Work in Real Development Environments</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <div class="section-heading">
+          <p class="eyebrow">Projects</p>
+          <h2>Featured Projects & Research Work</h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your Student Task Manager screenshot at assets/project-login.png. -->
+              <img src="assets/project-login.png" alt="Student Task Manager project screenshot" />
+              <div class="image-placeholder">Student Task Manager</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">Web Application</p>
+              <h3>Student Task Manager</h3>
+              <p>
+                A task management web application that allows students to organize tasks,
+                track progress, and manage daily academic work through a clean dashboard
+                interface.
+              </p>
+              <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for this project -->
+                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+                <!-- Replace # with the actual live demo link for this project -->
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your Orpon project screenshot at assets/project-orpon.png. -->
+              <img src="assets/project-orpon.png" alt="Orpon project screenshot" />
+              <div class="image-placeholder">Orpon</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">Web Project</p>
+              <h3>Orpon</h3>
+              <p>
+                A web-based project focused on building a practical digital solution with a
+                clean user interface and organized system features. This project helped me
+                improve my front-end development, project structure, and real-world
+                problem-solving skills.
+              </p>
+              <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for this project -->
+                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+                <!-- Replace # with the actual live demo link for this project -->
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your CrimeAlert project screenshot at assets/project-crimealert.png. -->
+              <img src="assets/project-crimealert.png" alt="CrimeAlert DBMS project screenshot" />
+              <div class="image-placeholder">CrimeAlert</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">DBMS Project</p>
+              <h3>CrimeAlert</h3>
+              <p>
+                CrimeAlert is a real-time community crime reporting and alert system designed
+                to help users report crimes, view incidents on an interactive map, and
+                receive safety alerts. The system includes user authentication, crime
+                reporting, anonymous reporting, image uploads, interactive crime maps,
+                comments, private chat, dashboards, analytics, and alert zone features.
+              </p>
+              <div class="tags">
+                <span>PHP</span>
+                <span>MySQL</span>
+                <span>HTML</span>
+                <span>JavaScript</span>
+                <span>Tailwind CSS</span>
+                <span>Google Maps API</span>
+                <span>Chart.js</span>
+                <span>PHPMailer</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for CrimeAlert -->
+                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+                <!-- Replace # with the actual live demo link for CrimeAlert -->
+                <a
+                  class="btn small secondary"
+                  href="assets/CrimeAlert_report.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Report
+                </a>
+                <!-- Put the CrimeAlert report PDF inside assets and name it CrimeAlert_report.pdf -->
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your attendance system screenshot at assets/project-attendance.png. -->
+              <img
+                src="assets/project-attendance.png"
+                alt="Smart Attendance System project screenshot"
+              />
+              <div class="image-placeholder">Smart Attendance System</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">AI Lab Project</p>
+              <h3>Smart Attendance System Using Face Recognition and QR Code</h3>
+              <p>
+                An AI lab project focused on improving attendance management using face
+                recognition and QR code-based verification.
+              </p>
+              <div class="tags">
+                <span>Python</span>
+                <span>Face Recognition</span>
+                <span>QR Code</span>
+                <span>Machine Learning</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for this project -->
+                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+                <!-- Replace # with the actual live demo link for this project -->
+                <a
+                  class="btn small secondary"
+                  href="https://www.overleaf.com/read/cbgktnwdfsnz#31e4a9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Paper / Overleaf
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your ML project screenshot at assets/project-performance.png. -->
+              <img
+                src="assets/project-performance.png"
+                alt="Student Performance Prediction and Clustering project screenshot"
+              />
+              <div class="image-placeholder">Performance Prediction</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">Machine Learning</p>
+              <h3>Student Performance Prediction and Clustering</h3>
+              <p>
+                A machine learning project for predicting student performance and grouping
+                students using clustering techniques.
+              </p>
+              <div class="tags">
+                <span>Python</span>
+                <span>Machine Learning</span>
+                <span>Data Analysis</span>
+                <span>Clustering</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for this project -->
+                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+                <!-- Replace # with the actual live demo link for this project -->
+                <a
+                  class="btn small secondary"
+                  href="https://www.overleaf.com/read/jsmhyndmwjxr#f3bbd3"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Paper / Overleaf
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your FYDP project screenshot at assets/project-fydp.png. -->
+              <img
+                src="assets/project-fydp.png"
+                alt="Agricultural Soil Nutrient Analysis and Crop Suitability Prediction project screenshot"
+              />
+              <div class="image-placeholder">Soil Nutrient Analysis</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">FYDP Project</p>
+              <h3>Agricultural Soil Nutrient Analysis and Crop Suitability Prediction</h3>
+              <p>
+                My FYDP project focused on agricultural soil nutrient analysis, soil
+                classification, and crop suitability prediction using machine learning. The
+                project aims to analyze soil attributes such as N, P, K, pH, organic carbon,
+                moisture, and other nutrients to support better crop recommendation
+                decisions.
+              </p>
+              <div class="tags">
+                <span>Python</span>
+                <span>Machine Learning</span>
+                <span>Data Analysis</span>
+                <span>Classification</span>
+                <span>Crop Prediction</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for this project -->
+                <a
+                  class="btn small secondary"
+                  href="https://www.overleaf.com/read/scnhjrzcpsft#031d86"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Paper / Overleaf
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <!-- Add your network intrusion detection screenshot at assets/project-nid.png. -->
+              <img
+                src="assets/project-nid.png"
+                alt="Network Intrusion Detection Using Machine Learning project screenshot"
+              />
+              <div class="image-placeholder">Network Intrusion Detection</div>
+            </div>
+            <div class="project-content">
+              <p class="project-category">Research Project</p>
+              <h3>Network Intrusion Detection Using Machine Learning</h3>
+              <p>
+                A paper-based computer security research project focused on detecting
+                network intrusions using machine learning techniques. The project studied
+                intrusion detection concepts, datasets, and classification approaches for
+                identifying malicious network activities.
+              </p>
+              <div class="tags">
+                <span>Python</span>
+                <span>Machine Learning</span>
+                <span>Cybersecurity</span>
+                <span>Intrusion Detection</span>
+                <span>Research</span>
+              </div>
+              <div class="project-actions">
+                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+                <!-- Replace # with the actual GitHub repository link for this project -->
+                <a
+                  class="btn small secondary"
+                  href="https://www.overleaf.com/read/dpdcvzknkwxb#f01e9e"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Paper / Overleaf
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="resume" class="section resume">
+        <div class="resume-panel">
+          <div>
+            <p class="eyebrow">Resume</p>
+            <h2>View my resume for education, skills, and project details.</h2>
+            <p>
+              You can view my resume to learn more about my education, technical skills,
+              projects, and experience. Click the button to open my resume in a new tab.
+            </p>
+          </div>
+          <!-- Put your resume PDF inside assets and name it resume.pdf -->
+          <a
+            class="btn primary"
+            href="assets/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Resume
+          </a>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's connect.</h2>
+          <p>
+            Contact me for software projects, internship opportunities, or collaboration on
+            web development and machine learning work.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn primary" href="mailto:mdisfaqhossain@gmail.com">Email Me</a>
+          <a
+            class="btn secondary"
+            href="https://github.com/mibon201101"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span>Email</span>
+            <a href="mailto:mdisfaqhossain@gmail.com">mdisfaqhossain@gmail.com</a>
+          </div>
+          <div class="contact-card">
+            <span>Phone</span>
+            <div class="contact-links">
+              <a href="tel:+8801518967414">+8801518967414</a>
+              <a href="tel:+8801637516382">+8801637516382</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span>GitHub</span>
+            <a
+              href="https://github.com/mibon201101"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub Profile
+            </a>
+          </div>
+          <div class="contact-card">
+            <span>LinkedIn</span>
+            <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Isfaq Hossain Ibon. All rights reserved.</p>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="mailto:mdisfaqhossain@gmail.com">mdisfaqhossain@gmail.com</a>
+        <a
+          href="https://github.com/mibon201101"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </footer>
+
+    <button class="back-to-top" type="button" aria-label="Back to top">Top</button>
+    <script src="script.js"></script>
+  </body>
+</html>
