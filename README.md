@@ -67,13 +67,15 @@ Expected live website:
 
 If the repository name changes, update the canonical and Open Graph URLs in `index.html`.
 
-## Screenshot
+## Screenshots
 
-![Current portfolio homepage preview](./assets/portfolio-preview-current.jpg)
+### Desktop Preview
 
-![Current portfolio mobile preview](./assets/portfolio-mobile-preview-current.jpg)
+![Current portfolio homepage preview](assets/portfolio-preview.jpg)
 
-The social-sharing card is available at `assets/og-portfolio.png`.
+### Mobile Preview
+
+![Current portfolio mobile preview](assets/portfolio-mobile-preview.jpg)
 
 ## Content still to add
 
