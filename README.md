@@ -39,8 +39,8 @@ portfolio-website/
     ├── project-crimealert.png
     ├── project-login.png
     ├── og-portfolio.png
-    ├── portfolio-preview.jpg
-    ├── portfolio-mobile-preview.jpg
+    ├── portfolio-preview-current.jpg
+    ├── portfolio-mobile-preview-current.jpg
     └── resume.pdf
 ```
 
@@ -69,7 +69,9 @@ If the repository name changes, update the canonical and Open Graph URLs in `ind
 
 ## Screenshot
 
-![Portfolio homepage preview](./assets/portfolio-preview.jpg)
+![Current portfolio homepage preview](./assets/portfolio-preview-current.jpg)
+
+![Current portfolio mobile preview](./assets/portfolio-mobile-preview-current.jpg)
 
 The social-sharing card is available at `assets/og-portfolio.png`.
 
