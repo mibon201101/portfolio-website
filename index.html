@@ -5,535 +5,796 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio website for Isfaq Hossain Ibon, CSE student at United International University."
+      content="Portfolio of Isfaq Hossain Ibon, a CSE student and aspiring web developer showcasing practical web applications, academic projects, technical skills, and professional goals."
     />
-    <title>Isfaq Hossain Ibon | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="author" content="Isfaq Hossain Ibon" />
+    <meta name="theme-color" content="#f3f0e8" />
+    <title>Isfaq Hossain Ibon | CSE Student &amp; Aspiring Web Developer</title>
+
+    <link rel="canonical" href="https://mibon201101.github.io/portfolio-website/" />
+    <link rel="icon" type="image/png" href="./assets/profile.png" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Isfaq Hossain Ibon | CSE Student &amp; Aspiring Web Developer"
+    />
+    <meta
+      property="og:description"
+      content="Practical web applications, academic projects, technical skills, and the learning journey of a CSE student at United International University."
+    />
+    <meta property="og:url" content="https://mibon201101.github.io/portfolio-website/" />
+    <meta
+      property="og:image"
+      content="https://mibon201101.github.io/portfolio-website/assets/og-portfolio.png"
+    />
+    <meta property="og:image:alt" content="Editorial portfolio card for Isfaq Hossain Ibon" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Isfaq Hossain Ibon | CSE Student &amp; Aspiring Web Developer"
+    />
+    <meta
+      name="twitter:description"
+      content="A CSE student building practical web projects and growing toward full-stack development."
+    />
+    <meta
+      name="twitter:image"
+      content="https://mibon201101.github.io/portfolio-website/assets/og-portfolio.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
   </head>
   <body>
-    <header class="site-header">
-      <nav class="navbar" aria-label="Primary navigation">
-        <a class="logo" href="#home" aria-label="Go to home section">IHI</a>
-        <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" data-header>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="Isfaq Hossain Ibon — home">
+          <span aria-hidden="true">IH</span>
+          <span class="brand-name">Isfaq Hossain Ibon</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="primary-menu"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <ul class="nav-links">
+
+        <ul class="nav-links" id="primary-menu">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li>
-            <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-          </li>
+          <li><a href="#journey">Journey</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section id="home" class="hero section">
-        <div class="hero-content">
-          <p class="eyebrow">Personal Portfolio</p>
-          <h1>Isfaq Hossain Ibon</h1>
-          <p class="title">CSE Student | Aspiring Web Developer</p>
-          <p class="university">United International University</p>
-          <p class="hero-text">
-            I am a CSE student at United International University with an interest in web
-            development, software projects, and machine learning. I enjoy building practical
-            systems, learning new technologies, and solving real-world problems.
+    <main id="main-content">
+      <section class="hero section-shell" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy" data-reveal>
+          <div class="section-kicker">
+            <span>CSE Portfolio</span>
+          </div>
+
+          <p class="hero-intro">Hello, I’m Isfaq.</p>
+          <h1 id="hero-title">Isfaq Hossain Ibon</h1>
+          <p class="hero-role">CSE Student &amp; Aspiring Web Developer</p>
+          <p class="availability"><i aria-hidden="true"></i> Open to opportunities</p>
+          <p class="hero-summary">
+            I build practical, user-focused web applications using JavaScript and modern
+            frontend technologies, while growing toward full-stack development.
           </p>
-          <div class="button-group">
-            <a class="btn primary" href="#projects">View Projects</a>
+
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button button-primary" href="#projects">
+              Explore projects <span aria-hidden="true">↓</span>
+            </a>
             <a
-              class="btn secondary"
-              href="assets/resume.pdf"
+              class="button button-secondary"
+              href="./assets/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Resume
+              View resume <span aria-hidden="true">↗</span>
             </a>
-            <a class="btn outline" href="#contact">Contact</a>
           </div>
-          <div class="social-actions" aria-label="Portfolio links">
+
+          <div class="hero-meta">
+            <div>
+              <span>Based in</span>
+              <strong>Dhaka, Bangladesh</strong>
+            </div>
+            <div>
+              <span>Studying at</span>
+              <strong>United International University</strong>
+            </div>
+          </div>
+
+          <div class="hero-socials" aria-label="Social profiles">
             <a
-              class="btn small outline"
               href="https://github.com/mibon201101"
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub
+              GitHub <span aria-hidden="true">↗</span>
             </a>
-            <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a
-              class="btn small outline"
-              href="assets/resume.pdf"
+              href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Resume
+              LinkedIn <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>
-        <div class="hero-visual">
-          <!-- Put your professional profile photo inside assets and name it profile.png -->
-          <img src="assets/profile.png" alt="Professional profile photo of Isfaq Hossain Ibon" />
-        </div>
+
+        <figure class="hero-portrait" data-reveal>
+          <div class="portrait-frame">
+            <img
+              src="./assets/profile.png"
+              alt="Isfaq Hossain Ibon wearing a navy suit"
+              width="1254"
+              height="1254"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </div>
+          <figcaption>
+            <span>Computer Science &amp; Engineering</span>
+            <span>UIU · Dhaka</span>
+          </figcaption>
+        </figure>
       </section>
 
-      <section id="about" class="section about">
-        <div class="section-heading">
-          <p class="eyebrow">About Me</p>
-          <h2>Focused on practical learning and real development work.</h2>
-        </div>
-        <div class="about-panel">
-          <p>
-            I am a Computer Science and Engineering student at United International
-            University. I am currently improving my skills in web development, programming,
-            and machine learning through practical projects. I enjoy learning new
-            technologies and building systems that solve real problems.
-          </p>
-          <p>
-            I adapt quickly, learn new technologies with focus, and contribute in real
-            development environments.
-          </p>
-        </div>
-      </section>
+      <section class="about section-shell section-block" id="about" aria-labelledby="about-title">
+        <header class="editorial-heading" data-reveal>
+          <p class="eyebrow">About me</p>
+          <h2 id="about-title">Building practical skills through real projects.</h2>
+        </header>
 
-      <section id="skills" class="section skills">
-        <div class="section-heading">
-          <p class="eyebrow">Skills</p>
-          <h2>Technical skills and strengths.</h2>
-          <p>
-            My skills include core web development tools, basic knowledge of additional
-            programming technologies, and personal strengths that help me learn, adapt, and
-            contribute effectively.
-          </p>
-        </div>
-        <div class="skills-layout">
-          <article class="skills-card">
-            <h3>Technical Skills</h3>
-            <div class="skill-group">
-              <h4>Core Technical Skills</h4>
-              <div class="skills-badges core-skills" aria-label="Core technical skills">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Git</span>
-                <span>GitHub</span>
-                <span>Responsive Web Design</span>
-                <span>MySQL</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <h4>Familiar With / Basic Knowledge</h4>
-              <div class="skills-badges secondary-skills" aria-label="Familiar technologies">
-                <span>Python</span>
-                <span>C</span>
-                <span>C++</span>
-                <span>Java</span>
-                <span>PHP</span>
-                <span>Machine Learning Basics</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="skills-card">
-            <h3>Soft Skills / Strengths</h3>
-            <div class="skills-badges strength-skills" aria-label="Soft skills and strengths">
-              <span>Quick Learner</span>
-              <span>Strong Adaptability</span>
-              <span>Problem Solving</span>
-              <span>Team Collaboration</span>
-              <span>Communication</span>
-              <span>Willingness to Learn New Technologies</span>
-              <span>Ability to Work in Real Development Environments</span>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="projects" class="section projects">
-        <div class="section-heading">
-          <p class="eyebrow">Projects</p>
-          <h2>Featured Projects & Research Work</h2>
-        </div>
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your Student Task Manager screenshot at assets/project-login.png. -->
-              <img src="assets/project-login.png" alt="Student Task Manager project screenshot" />
-              <div class="image-placeholder">Student Task Manager</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">Web Application</p>
-              <h3>Student Task Manager</h3>
-              <p>
-                A task management web application that allows students to organize tasks,
-                track progress, and manage daily academic work through a clean dashboard
-                interface.
-              </p>
-              <div class="tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for this project -->
-                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
-                <!-- Replace # with the actual live demo link for this project -->
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your Orpon project screenshot at assets/project-orpon.png. -->
-              <img src="assets/project-orpon.png" alt="Orpon project screenshot" />
-              <div class="image-placeholder">Orpon</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">Web Project</p>
-              <h3>Orpon</h3>
-              <p>
-                A web-based project focused on building a practical digital solution with a
-                clean user interface and organized system features. This project helped me
-                improve my front-end development, project structure, and real-world
-                problem-solving skills.
-              </p>
-              <div class="tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for this project -->
-                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
-                <!-- Replace # with the actual live demo link for this project -->
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your CrimeAlert project screenshot at assets/project-crimealert.png. -->
-              <img src="assets/project-crimealert.png" alt="CrimeAlert DBMS project screenshot" />
-              <div class="image-placeholder">CrimeAlert</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">DBMS Project</p>
-              <h3>CrimeAlert</h3>
-              <p>
-                CrimeAlert is a real-time community crime reporting and alert system designed
-                to help users report crimes, view incidents on an interactive map, and
-                receive safety alerts. The system includes user authentication, crime
-                reporting, anonymous reporting, image uploads, interactive crime maps,
-                comments, private chat, dashboards, analytics, and alert zone features.
-              </p>
-              <div class="tags">
-                <span>PHP</span>
-                <span>MySQL</span>
-                <span>HTML</span>
-                <span>JavaScript</span>
-                <span>Tailwind CSS</span>
-                <span>Google Maps API</span>
-                <span>Chart.js</span>
-                <span>PHPMailer</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for CrimeAlert -->
-                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
-                <!-- Replace # with the actual live demo link for CrimeAlert -->
-                <a
-                  class="btn small secondary"
-                  href="assets/CrimeAlert_report.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Report
-                </a>
-                <!-- Put the CrimeAlert report PDF inside assets and name it CrimeAlert_report.pdf -->
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your attendance system screenshot at assets/project-attendance.png. -->
-              <img
-                src="assets/project-attendance.png"
-                alt="Smart Attendance System project screenshot"
-              />
-              <div class="image-placeholder">Smart Attendance System</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">AI Lab Project</p>
-              <h3>Smart Attendance System Using Face Recognition and QR Code</h3>
-              <p>
-                An AI lab project focused on improving attendance management using face
-                recognition and QR code-based verification.
-              </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>Face Recognition</span>
-                <span>QR Code</span>
-                <span>Machine Learning</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for this project -->
-                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
-                <!-- Replace # with the actual live demo link for this project -->
-                <a
-                  class="btn small secondary"
-                  href="https://www.overleaf.com/read/cbgktnwdfsnz#31e4a9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Paper / Overleaf
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your ML project screenshot at assets/project-performance.png. -->
-              <img
-                src="assets/project-performance.png"
-                alt="Student Performance Prediction and Clustering project screenshot"
-              />
-              <div class="image-placeholder">Performance Prediction</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">Machine Learning</p>
-              <h3>Student Performance Prediction and Clustering</h3>
-              <p>
-                A machine learning project for predicting student performance and grouping
-                students using clustering techniques.
-              </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>Machine Learning</span>
-                <span>Data Analysis</span>
-                <span>Clustering</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for this project -->
-                <a class="btn small secondary" href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
-                <!-- Replace # with the actual live demo link for this project -->
-                <a
-                  class="btn small secondary"
-                  href="https://www.overleaf.com/read/jsmhyndmwjxr#f3bbd3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Paper / Overleaf
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your FYDP project screenshot at assets/project-fydp.png. -->
-              <img
-                src="assets/project-fydp.png"
-                alt="Agricultural Soil Nutrient Analysis and Crop Suitability Prediction project screenshot"
-              />
-              <div class="image-placeholder">Soil Nutrient Analysis</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">FYDP Project</p>
-              <h3>Agricultural Soil Nutrient Analysis and Crop Suitability Prediction</h3>
-              <p>
-                My FYDP project focused on agricultural soil nutrient analysis, soil
-                classification, and crop suitability prediction using machine learning. The
-                project aims to analyze soil attributes such as N, P, K, pH, organic carbon,
-                moisture, and other nutrients to support better crop recommendation
-                decisions.
-              </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>Machine Learning</span>
-                <span>Data Analysis</span>
-                <span>Classification</span>
-                <span>Crop Prediction</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for this project -->
-                <a
-                  class="btn small secondary"
-                  href="https://www.overleaf.com/read/scnhjrzcpsft#031d86"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Paper / Overleaf
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <!-- Add your network intrusion detection screenshot at assets/project-nid.png. -->
-              <img
-                src="assets/project-nid.png"
-                alt="Network Intrusion Detection Using Machine Learning project screenshot"
-              />
-              <div class="image-placeholder">Network Intrusion Detection</div>
-            </div>
-            <div class="project-content">
-              <p class="project-category">Research Project</p>
-              <h3>Network Intrusion Detection Using Machine Learning</h3>
-              <p>
-                A paper-based computer security research project focused on detecting
-                network intrusions using machine learning techniques. The project studied
-                intrusion detection concepts, datasets, and classification approaches for
-                identifying malicious network activities.
-              </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>Machine Learning</span>
-                <span>Cybersecurity</span>
-                <span>Intrusion Detection</span>
-                <span>Research</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn small primary" href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-                <!-- Replace # with the actual GitHub repository link for this project -->
-                <a
-                  class="btn small secondary"
-                  href="https://www.overleaf.com/read/dpdcvzknkwxb#f01e9e"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Paper / Overleaf
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="resume" class="section resume">
-        <div class="resume-panel">
-          <div>
-            <p class="eyebrow">Resume</p>
-            <h2>View my resume for education, skills, and project details.</h2>
+        <div class="about-content" data-reveal>
+          <div class="prose">
             <p>
-              You can view my resume to learn more about my education, technical skills,
-              projects, and experience. Click the button to open my resume in a new tab.
+              I am a Computer Science and Engineering student at United International
+              University with a strong interest in web development and software engineering.
+              I enjoy turning ideas into practical applications, solving problems, and
+              learning through academic and personal projects.
+            </p>
+            <p>
+              My current goal is to strengthen my JavaScript and full-stack development skills
+              while gaining real-world experience through internships, junior developer roles,
+              and collaborative projects.
+            </p>
+            <p>
+              My long-term vision is to become a dependable software engineer who can build
+              secure, user-friendly, and meaningful digital products that solve real problems.
             </p>
           </div>
-          <a
-            class="btn primary"
-            href="assets/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open Resume
-          </a>
+
+          <aside class="focus-note" aria-labelledby="focus-title">
+            <p class="note-label">Current focus</p>
+            <h3 id="focus-title">Building full-stack foundations</h3>
+            <ul>
+              <li>Advanced JavaScript</li>
+              <li>Backend Development</li>
+              <li>REST APIs</li>
+              <li>Database Design</li>
+              <li>Full-Stack Development</li>
+            </ul>
+          </aside>
         </div>
       </section>
 
-      <section id="contact" class="section contact">
-        <div class="section-heading">
-          <p class="eyebrow">Contact</p>
-          <h2>Let's connect.</h2>
-          <p>
-            Contact me for software projects, internship opportunities, or collaboration on
-            web development and machine learning work.
-          </p>
-        </div>
-        <div class="contact-actions">
-          <a class="btn primary" href="mailto:mdisfaqhossain@gmail.com">Email Me</a>
-          <a
-            class="btn secondary"
-            href="https://github.com/mibon201101"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-card">
-            <span>Email</span>
-            <a href="mailto:mdisfaqhossain@gmail.com">mdisfaqhossain@gmail.com</a>
+      <section class="skills section-block" id="skills" aria-labelledby="skills-title">
+        <div class="section-shell">
+          <header class="split-heading" data-reveal>
+            <div>
+              <p class="eyebrow">Skills &amp; tools</p>
+              <h2 id="skills-title">Skills and tools</h2>
+            </div>
+            <p>
+              Skills I use regularly and technologies I’m currently developing through
+              coursework and projects.
+            </p>
+          </header>
+
+          <div class="skill-grid">
+            <article class="skill-group" data-reveal>
+              <p class="skill-caption">Working knowledge</p>
+              <h3>Core Skills</h3>
+              <ul class="skill-tags" aria-label="Core skills">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Responsive Web Design</li>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>Basic UI Implementation</li>
+              </ul>
+            </article>
+
+            <article class="skill-group" data-reveal>
+              <p class="skill-caption">Foundational exposure</p>
+              <h3>Foundational Knowledge</h3>
+              <ul class="skill-tags" aria-label="Programming and data technologies">
+                <li>C</li>
+                <li>C++</li>
+                <li>Java</li>
+                <li>Python</li>
+                <li>PHP</li>
+                <li>MySQL</li>
+                <li>REST API Concepts</li>
+                <li>Machine Learning Fundamentals</li>
+              </ul>
+            </article>
+
+            <article class="skill-group" data-reveal>
+              <p class="skill-caption">Everyday workflow</p>
+              <h3>Tools I Use</h3>
+              <ul class="skill-tags" aria-label="Development tools">
+                <li>Visual Studio Code</li>
+                <li>GitHub</li>
+                <li>Figma</li>
+                <li>Jira</li>
+                <li>draw.io</li>
+                <li>Overleaf</li>
+                <li>Google Colab</li>
+              </ul>
+            </article>
+
+            <article class="skill-group" data-reveal>
+              <p class="skill-caption">How I work</p>
+              <h3>Professional Strengths</h3>
+              <ul class="skill-tags" aria-label="Professional strengths">
+                <li>Problem Solving</li>
+                <li>Adaptability</li>
+                <li>Teamwork</li>
+                <li>Communication</li>
+                <li>Quick Learning</li>
+                <li>Attention to Detail</li>
+              </ul>
+            </article>
           </div>
-          <div class="contact-card">
-            <span>Phone</span>
-            <div class="contact-links">
-              <a href="tel:+8801518967414">+8801518967414</a>
-              <a href="tel:+8801637516382">+8801637516382</a>
+        </div>
+      </section>
+
+      <section
+        class="projects section-shell section-block"
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <header class="split-heading" data-reveal>
+          <div>
+            <p class="eyebrow">Projects</p>
+            <h2 id="projects-title">Selected projects</h2>
+          </div>
+          <p>
+            Practical web work, database projects, and academic research—described by their
+            current scope and contribution.
+          </p>
+        </header>
+
+        <article class="featured-project" data-reveal>
+          <div class="featured-media">
+            <img
+              src="./assets/project-fydp.png"
+              alt="AgriSoil Insight interface concept showing nutrient analysis, soil classification, and crop suitability results"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>Interface concept</span>
+          </div>
+          <div class="featured-copy">
+            <p class="project-label">01 — Featured Academic Project</p>
+            <h3>
+              Agricultural Soil Nutrient Analysis, Classification and Crop Suitability
+              Prediction
+            </h3>
+            <p>
+              An academic machine-learning project exploring soil nutrient analysis, soil
+              classification, and crop suitability prediction. The work includes data
+              preprocessing, model evaluation, and research-focused analysis; it is not
+              presented as a completed commercial product.
+            </p>
+            <ul class="project-tags" aria-label="Project technologies">
+              <li>Python</li>
+              <li>Machine Learning</li>
+              <li>Data Preprocessing</li>
+              <li>Model Evaluation</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="inline-action"
+                href="https://www.overleaf.com/read/scnhjrzcpsft#031d86"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read paper ↗
+              </a>
+            </div>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-1"
+              >
+                <span>Scope &amp; next steps</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-1" aria-hidden="false">
+                <div>
+                  <p>
+                    <strong>Contribution:</strong> exploring a workflow for analyzing soil
+                    attributes and evaluating classification and crop-suitability models.
+                  </p>
+                  <p>
+                    <strong>Next:</strong> document the final dataset, model results, and
+                    implementation status in a public repository.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="contact-card">
-            <span>GitHub</span>
+        </article>
+
+        <div class="project-grid">
+          <article class="project-card project-card-wide" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">02 — Web project</p>
+              <span aria-hidden="true">ORP / 02</span>
+            </div>
+            <div class="project-card-media">
+              <img
+                src="./assets/project-orpon.png"
+                alt="Orpon fundraising platform homepage with campaign statistics and urgent campaign cards"
+                width="1812"
+                height="956"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Orpon</h3>
+            <p>
+              A practical web project focused on building a clear interface and an organized
+              project structure. It helped develop frontend implementation and
+              problem-solving skills.
+            </p>
+            <ul class="project-tags" aria-label="Orpon technologies">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-2"
+              >
+                <span>Project notes</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-2" aria-hidden="false">
+                <div>
+                  <p>
+                    <strong>Current:</strong> portfolio records confirm a frontend web project;
+                    public source and demo links are currently unavailable.
+                  </p>
+                  <p>
+                    <strong>Next:</strong> document the verified feature set and implementation
+                    details when the project is published.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card project-card-compact" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">03 — DBMS project</p>
+              <span aria-hidden="true">DB / 03</span>
+            </div>
+            <div class="project-card-media">
+              <img
+                src="./assets/project-crimealert.png"
+                alt="Crime Alert interface with real-time reporting, interactive map, and community safety features"
+                width="595"
+                height="280"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Crime Alert</h3>
+            <p>
+              A database-driven community reporting project centered on recording incidents,
+              organizing crime reports, and making safety information easier to review.
+            </p>
+            <ul class="project-tags" aria-label="Crime Alert technologies">
+              <li>PHP</li>
+              <li>MySQL</li>
+              <li>HTML</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-3"
+              >
+                <span>Project notes</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-3" aria-hidden="false">
+                <div>
+                  <p>
+                    <strong>Scope:</strong> reporting, user access, map-based incident context,
+                    dashboards, and analytics were part of the project design.
+                  </p>
+                  <p>
+                    <strong>Next:</strong> verify the deployed feature set and supporting
+                    documentation before publishing direct project actions.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card project-card-compact" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">04 — Student productivity</p>
+              <span aria-hidden="true">STM / 04</span>
+            </div>
+            <div class="project-card-media">
+              <img
+                src="./assets/project-login.png"
+                alt="Student Task Manager dashboard with task controls, status summaries, filters, and deadlines"
+                width="1918"
+                height="956"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Student Task Manager</h3>
+            <p>
+              A student-focused task management interface for creating work, organizing
+              deadlines, reviewing task status, and seeing simple productivity statistics.
+            </p>
+            <ul class="project-tags" aria-label="Student Task Manager technologies">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-4"
+              >
+                <span>Current vs. planned</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-4" aria-hidden="false">
+                <div>
+                  <p>
+                    <strong>Current:</strong> task creation, deadline organization, status
+                    tracking, and a statistics-focused interface.
+                  </p>
+                  <p>
+                    <strong>Planned:</strong> authentication, persistent storage, and backend
+                    improvements. These are not presented as complete.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card project-card-wide project-card-muted" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">05 — Frontend reference</p>
+              <span aria-hidden="true">THK / 05</span>
+            </div>
+            <h3>Thikana Frontend Demo</h3>
+            <p>
+              A separate visual and functional frontend reference implementation created to
+              explore layout, interface behavior, and responsive presentation.
+            </p>
+            <ul class="project-tags" aria-label="Thikana Frontend Demo technologies">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Responsive UI</li>
+            </ul>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-5"
+              >
+                <span>Project notes</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-5" aria-hidden="false">
+                <div>
+                  <p>
+                    <strong>Contribution:</strong> translating a visual direction into a usable
+                    frontend reference.
+                  </p>
+                  <p>
+                    <strong>Next:</strong> document the implemented interactions when verified
+                    source and demo URLs become available.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-archive" data-reveal>
+          <div>
+            <p class="eyebrow">Also explored</p>
+            <h3>Additional academic work</h3>
+          </div>
+          <ul>
+            <li>
+              <span>06</span>
+              <p>Smart Attendance System using Face Recognition and QR Code</p>
+              <a
+                href="https://www.overleaf.com/read/cbgktnwdfsnz#31e4a9"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Paper ↗
+              </a>
+            </li>
+            <li>
+              <span>07</span>
+              <p>Student Performance Prediction and Clustering</p>
+              <a
+                href="https://www.overleaf.com/read/jsmhyndmwjxr#f3bbd3"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Paper ↗
+              </a>
+            </li>
+            <li>
+              <span>08</span>
+              <p>Network Intrusion Detection using Machine Learning</p>
+              <a
+                href="https://www.overleaf.com/read/dpdcvzknkwxb#f01e9e"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Paper ↗
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="journey section-block" id="journey" aria-labelledby="journey-title">
+        <div class="section-shell">
+          <header class="split-heading" data-reveal>
+            <div>
+              <p class="eyebrow">Academic foundations</p>
+              <h2 id="journey-title">Areas shaping my development journey.</h2>
+            </div>
+            <p>
+              My coursework and personal projects have helped me build foundations across
+              software development, databases, algorithms, security, and machine learning.
+            </p>
+          </header>
+
+          <div class="journey-grid">
+            <article class="education-block" data-reveal>
+              <p class="timeline-marker">Present</p>
+              <div>
+                <p class="institution">United International University</p>
+                <h3>Bachelor of Science in Computer Science and Engineering</h3>
+                <p>
+                  Building a foundation across computing, software development, and
+                  problem-solving through coursework and projects.
+                </p>
+                <ul class="study-areas" aria-label="Selected study areas">
+                  <li>Web Development</li>
+                  <li>Software Engineering</li>
+                  <li>Database Systems</li>
+                  <li>Data Structures &amp; Algorithms</li>
+                  <li>Machine Learning Fundamentals</li>
+                  <li>Computer Security</li>
+                </ul>
+              </div>
+            </article>
+
+            <aside class="learning-block" data-reveal>
+              <p class="note-label">Currently learning</p>
+              <h3>From frontend foundations toward complete applications.</h3>
+              <p>
+                Currently strengthening the skills needed to move from static frontend
+                projects toward complete full-stack applications.
+              </p>
+              <ul>
+                <li>Advanced JavaScript</li>
+                <li>Node.js</li>
+                <li>Express.js</li>
+                <li>Backend Development</li>
+                <li>REST APIs</li>
+                <li>Authentication</li>
+                <li>Database Design</li>
+                <li>UI/UX Fundamentals</li>
+              </ul>
+            </aside>
+          </div>
+
+          <div class="direction" data-reveal>
+            <div class="direction-heading">
+              <p class="eyebrow">Where I’m going</p>
+              <h3>A practical path forward.</h3>
+            </div>
+            <ol>
+              <li>
+                <span>Now</span>
+                <p>Strengthening JavaScript, frontend fundamentals, and project quality.</p>
+              </li>
+              <li>
+                <span>Next</span>
+                <p>Learning backend development, APIs, authentication, and databases.</p>
+              </li>
+              <li>
+                <span>Long term</span>
+                <p>
+                  Growing into a well-rounded software engineer who can build useful and
+                  scalable products.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-band" aria-labelledby="resume-title">
+        <div class="section-shell" data-reveal>
+          <div>
+            <p class="eyebrow">Resume</p>
+            <h2 id="resume-title">A concise view of my education, skills, and work.</h2>
+          </div>
+          <div class="resume-actions">
+            <a
+              class="button button-light"
+              href="./assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View resume ↗
+            </a>
+            <a
+              class="text-link text-link-light"
+              href="./assets/resume.pdf"
+              download="Isfaq-Hossain-Ibon-Resume.pdf"
+            >
+              Download PDF ↓
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="contact section-shell section-block"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="contact-layout">
+          <header class="contact-heading" data-reveal>
+            <p class="eyebrow">Get in touch</p>
+            <h2 id="contact-title">Let’s build something useful.</h2>
+            <p>
+              I’m currently open to internships, junior developer opportunities,
+              collaborations, and meaningful projects where I can learn, contribute, and grow.
+            </p>
+            <a class="button button-primary" href="mailto:mdisfaqhossain@gmail.com">
+              Email me <span aria-hidden="true">↗</span>
+            </a>
+          </header>
+
+          <address class="contact-list" data-reveal>
+            <a href="mailto:mdisfaqhossain@gmail.com">
+              <span>Email</span>
+              <strong>mdisfaqhossain@gmail.com</strong>
+              <i aria-hidden="true">↗</i>
+            </a>
             <a
               href="https://github.com/mibon201101"
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub Profile
+              <span>GitHub</span>
+              <strong>@mibon201101</strong>
+              <i aria-hidden="true">↗</i>
             </a>
-          </div>
-          <div class="contact-card">
-            <span>LinkedIn</span>
-            <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
+            <a
+              href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>LinkedIn</span>
+              <strong>Isfaq Hossain</strong>
+              <i aria-hidden="true">↗</i>
+            </a>
+            <div>
+              <span>Location</span>
+              <strong>Dhaka, Bangladesh</strong>
+            </div>
+            <a
+              href="./assets/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Resume</span>
+              <strong>View PDF</strong>
+              <i aria-hidden="true">↗</i>
+            </a>
+          </address>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>&copy; <span id="year"></span> Isfaq Hossain Ibon. All rights reserved.</p>
-      <div class="footer-links" aria-label="Footer links">
-        <a href="mailto:mdisfaqhossain@gmail.com">mdisfaqhossain@gmail.com</a>
-        <a
-          href="https://github.com/mibon201101"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <div class="section-shell">
+        <div class="footer-brand">
+          <span aria-hidden="true">IH</span>
+          <div>
+            <strong>Isfaq Hossain Ibon</strong>
+            <p>CSE Student &amp; Aspiring Web Developer</p>
+          </div>
+        </div>
+        <div class="footer-note">
+          <p>Designed and built by Isfaq Hossain Ibon.</p>
+          <p>&copy; <span id="current-year"></span> · Dhaka, Bangladesh</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a
+            href="https://github.com/mibon201101"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+          <a
+            href="https://www.linkedin.com/in/isfaq-hossain-4100b6369/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+          <a href="mailto:mdisfaqhossain@gmail.com">Email ↗</a>
+        </nav>
       </div>
     </footer>
 
-    <button class="back-to-top" type="button" aria-label="Back to top">Top</button>
-    <script src="script.js"></script>
+    <button class="back-to-top" type="button" aria-label="Back to top">
+      <span aria-hidden="true">↑</span>
+    </button>
   </body>
 </html>
