@@ -71,8 +71,6 @@ If the repository name changes, update the canonical and Open Graph URLs in `ind
 
 ![Portfolio homepage preview](./assets/portfolio-preview.jpg)
 
-![Portfolio mobile preview](./assets/portfolio-mobile-preview.jpg)
-
 The social-sharing card is available at `assets/og-portfolio.png`.
 
 ## Content still to add
