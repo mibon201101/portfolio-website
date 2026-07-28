@@ -116,7 +116,12 @@
           assets/video/smoke-loop.webm and assets/video/smoke-loop.mp4.
           Until then, this lightweight CSS atmosphere avoids a broken video request.
         -->
-        <div class="hero-atmosphere" aria-hidden="true" data-scroll-depth="atmosphere">
+        <div
+          class="hero-atmosphere"
+          aria-hidden="true"
+          data-scroll-depth="atmosphere"
+          data-pointer-depth="10"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -197,7 +202,11 @@
               data-scroll-depth="portrait-image"
             />
           </div>
-          <div class="portrait-availability" data-scroll-depth="availability">
+          <div
+            class="portrait-availability"
+            data-scroll-depth="availability"
+            data-pointer-depth="4"
+          >
             <span>Open to opportunities</span>
             <strong>Internships and junior roles</strong>
           </div>
@@ -395,6 +404,7 @@
                 height="280"
                 loading="lazy"
                 decoding="async"
+                data-scroll-depth="supporting-project-image"
               />
             </div>
             <h3>Crime Alert</h3>
@@ -438,6 +448,7 @@
                 height="956"
                 loading="lazy"
                 decoding="async"
+                data-scroll-depth="supporting-project-image"
               />
             </div>
             <h3>Student Task Manager</h3>
@@ -480,6 +491,7 @@
                 height="941"
                 loading="lazy"
                 decoding="async"
+                data-scroll-depth="supporting-project-image"
               />
             </div>
             <h3>Agricultural Soil Nutrient Analysis, Classification and Crop Suitability Prediction</h3>

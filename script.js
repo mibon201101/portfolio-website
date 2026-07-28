@@ -4,16 +4,14 @@ const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-links");
 const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-const anchorLinks = [
-  ...document.querySelectorAll('a[href^="#"]:not(.skip-link)'),
-];
+const anchorLinks = [...document.querySelectorAll('a[href^="#"]:not(.skip-link)')];
 const sections = [...document.querySelectorAll("main section[id]")];
 const backToTop = document.querySelector(".back-to-top");
 const footer = document.querySelector(".site-footer");
 const hero = document.querySelector("[data-parallax-root]");
+const timeline = document.querySelector("[data-timeline]");
 const year = document.querySelector("#current-year");
 const accordionButtons = document.querySelectorAll(".project-details-toggle");
-const timeline = document.querySelector("[data-timeline]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointer = window.matchMedia(
   "(hover: hover) and (pointer: fine) and (min-width: 900px)",
@@ -23,15 +21,13 @@ const gsapApi = window.gsap;
 const scrollTriggerApi = window.ScrollTrigger;
 const LenisApi = window.Lenis;
 const motionLibrariesReady = Boolean(gsapApi && scrollTriggerApi);
+const pointerSetters = new WeakMap();
 
 let lenis;
 let lenisTicker;
 let scrollFrame;
-const pointerSetters = new WeakMap();
 
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
+if (year) year.textContent = new Date().getFullYear();
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
@@ -47,9 +43,7 @@ const setMenuState = (isOpen, moveFocus = false) => {
   navMenu.classList.toggle("is-open", isOpen);
   document.body.classList.toggle("menu-open", isOpen);
 
-  if (isOpen && moveFocus) {
-    navMenu.querySelector("a")?.focus();
-  }
+  if (isOpen && moveFocus) navMenu.querySelector("a")?.focus();
 };
 
 const updateActiveNavigation = (hash) => {
@@ -99,11 +93,11 @@ const startLenis = () => {
 
   lenis = new LenisApi({
     autoRaf: false,
-    duration: 0.92,
-    easing: (value) => Math.min(1, 1.001 - 2 ** (-10 * value)),
+    duration: 0.68,
+    easing: (value) => 1 - (1 - value) ** 4,
     smoothWheel: true,
     syncTouch: false,
-    wheelMultiplier: 0.96,
+    wheelMultiplier: 1,
     touchMultiplier: 1,
     overscroll: true,
   });
@@ -116,7 +110,6 @@ const startLenis = () => {
 
 const stopLenis = () => {
   if (!lenis) return;
-
   if (lenisTicker) gsapApi?.ticker.remove(lenisTicker);
   lenis.destroy();
   lenis = undefined;
@@ -137,7 +130,7 @@ const scrollToElement = (target, { immediate = false } = {}) => {
   if (lenis && !reducedMotion.matches) {
     lenis.scrollTo(target, {
       offset,
-      duration: immediate ? 0 : 0.86,
+      duration: immediate ? 0 : 0.68,
       immediate,
     });
     return;
@@ -162,17 +155,19 @@ anchorLinks.forEach((link) => {
     setMenuState(false);
     updateActiveNavigation(hash);
     scrollToElement(target);
-
-    if (window.location.hash !== hash) {
-      window.history.pushState(null, "", hash);
-    }
+    if (window.location.hash !== hash) window.history.pushState(null, "", hash);
   });
 });
 
 window.addEventListener("popstate", () => {
   if (!window.location.hash) {
-    if (lenis && !reducedMotion.matches) lenis.scrollTo(0, { duration: 0.72 });
-    else window.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
+    if (lenis && !reducedMotion.matches) lenis.scrollTo(0, { duration: 0.62 });
+    else {
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion.matches ? "auto" : "smooth",
+      });
+    }
     return;
   }
 
@@ -182,7 +177,6 @@ window.addEventListener("popstate", () => {
 
 const updateFallbackTimeline = () => {
   if (!timeline || motionLibrariesReady) return;
-
   const rect = timeline.getBoundingClientRect();
   const start = window.innerHeight * 0.84;
   const end = window.innerHeight * 0.24;
@@ -192,7 +186,7 @@ const updateFallbackTimeline = () => {
 
 const updateScrollUI = () => {
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
-  backToTop?.classList.toggle("is-visible", window.scrollY > 600);
+  backToTop?.classList.toggle("is-visible", window.scrollY > 500);
   updateFallbackTimeline();
   scrollFrame = undefined;
 };
@@ -208,10 +202,12 @@ window.addEventListener(
 updateScrollUI();
 
 backToTop?.addEventListener("click", () => {
-  if (lenis && !reducedMotion.matches) {
-    lenis.scrollTo(0, { duration: 0.82 });
-  } else {
-    window.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
+  if (lenis && !reducedMotion.matches) lenis.scrollTo(0, { duration: 0.66 });
+  else {
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotion.matches ? "auto" : "smooth",
+    });
   }
 });
 
@@ -226,14 +222,13 @@ accordionButtons.forEach((button) => {
     button.setAttribute("aria-expanded", String(!isOpen));
     panel.setAttribute("aria-hidden", String(isOpen));
     panel.classList.toggle("is-open", !isOpen);
-
     window.requestAnimationFrame(() => scrollTriggerApi?.refresh());
   });
 });
 
 const resetPointerEffects = () => {
   hero?.querySelectorAll("[data-pointer-depth]").forEach((item) => {
-    gsapApi?.killTweensOf(item, "--pointer-x,--pointer-y");
+    gsapApi?.killTweensOf(item);
     item.style.setProperty("--pointer-x", "0px");
     item.style.setProperty("--pointer-y", "0px");
   });
@@ -254,11 +249,11 @@ const getPointerSetters = (item) => {
   if (!pointerSetters.has(item)) {
     pointerSetters.set(item, {
       x: gsapApi.quickTo(item, "--pointer-x", {
-        duration: 0.32,
+        duration: 0.38,
         ease: "power3.out",
       }),
       y: gsapApi.quickTo(item, "--pointer-y", {
-        duration: 0.32,
+        duration: 0.38,
         ease: "power3.out",
       }),
     });
@@ -274,44 +269,30 @@ const enablePointerEffects = () => {
 
   if (hero && !hero.dataset.parallaxReady) {
     hero.dataset.parallaxReady = "true";
-    let parallaxFrame;
 
     hero.addEventListener("pointermove", (event) => {
-      if (!finePointer.matches || reducedMotion.matches || parallaxFrame) return;
+      if (!finePointer.matches || reducedMotion.matches) return;
+      const rect = hero.getBoundingClientRect();
+      const x = (clamp((event.clientX - rect.left) / rect.width) - 0.5) * 2;
+      const y = (clamp((event.clientY - rect.top) / rect.height) - 0.5) * 2;
 
-      parallaxFrame = window.requestAnimationFrame(() => {
-        const rect = hero.getBoundingClientRect();
-        const x = clamp((event.clientX - rect.left) / rect.width) - 0.5;
-        const y = clamp((event.clientY - rect.top) / rect.height) - 0.5;
-
-        hero.querySelectorAll("[data-pointer-depth]").forEach((item) => {
-          const depth = Number(item.dataset.pointerDepth) || 6;
-          const pointerX = `${(x * depth).toFixed(2)}px`;
-          const pointerY = `${(y * depth * 0.55).toFixed(2)}px`;
-          const setters = getPointerSetters(item);
-
-          if (setters) {
-            setters.x(pointerX);
-            setters.y(pointerY);
-          } else {
-            item.style.setProperty("--pointer-x", pointerX);
-            item.style.setProperty("--pointer-y", pointerY);
-          }
-        });
-        parallaxFrame = undefined;
+      hero.querySelectorAll("[data-pointer-depth]").forEach((item) => {
+        const depth = Number(item.dataset.pointerDepth) || 6;
+        const setters = getPointerSetters(item);
+        const pointerX = `${(x * depth).toFixed(2)}px`;
+        const pointerY = `${(y * depth * 0.55).toFixed(2)}px`;
+        if (setters) {
+          setters.x(pointerX);
+          setters.y(pointerY);
+        }
       });
     });
 
     hero.addEventListener("pointerleave", () => {
       hero.querySelectorAll("[data-pointer-depth]").forEach((item) => {
         const setters = getPointerSetters(item);
-        if (setters) {
-          setters.x("0px");
-          setters.y("0px");
-        } else {
-          item.style.setProperty("--pointer-x", "0px");
-          item.style.setProperty("--pointer-y", "0px");
-        }
+        setters?.x("0px");
+        setters?.y("0px");
       });
     });
   }
@@ -320,29 +301,17 @@ const enablePointerEffects = () => {
     if (item.dataset.tiltReady) return;
     item.dataset.tiltReady = "true";
     let rect;
-    let tiltFrame;
 
     item.addEventListener("pointerenter", () => {
       rect = item.getBoundingClientRect();
     });
 
     item.addEventListener("pointermove", (event) => {
-      if (
-        !rect ||
-        tiltFrame ||
-        !finePointer.matches ||
-        reducedMotion.matches
-      ) {
-        return;
-      }
-
-      tiltFrame = window.requestAnimationFrame(() => {
-        const x = clamp((event.clientX - rect.left) / rect.width);
-        const y = clamp((event.clientY - rect.top) / rect.height);
-        item.style.setProperty("--tilt-x", `${((0.5 - y) * 5).toFixed(2)}deg`);
-        item.style.setProperty("--tilt-y", `${((x - 0.5) * 5).toFixed(2)}deg`);
-        tiltFrame = undefined;
-      });
+      if (!rect || !finePointer.matches || reducedMotion.matches) return;
+      const x = clamp((event.clientX - rect.left) / rect.width);
+      const y = clamp((event.clientY - rect.top) / rect.height);
+      item.style.setProperty("--tilt-x", `${((0.5 - y) * 5).toFixed(2)}deg`);
+      item.style.setProperty("--tilt-y", `${((x - 0.5) * 5).toFixed(2)}deg`);
     });
 
     item.addEventListener("pointerleave", () => {
@@ -377,6 +346,57 @@ const enablePointerEffects = () => {
   });
 };
 
+const addOnceTrigger = (timelineInstance, trigger, start = "top 84%") => {
+  scrollTriggerApi.create({
+    animation: timelineInstance,
+    trigger,
+    start,
+    once: true,
+  });
+  return timelineInstance;
+};
+
+const animateHeading = (timelineInstance, heading, position = 0, distance = 28) => {
+  if (!heading) return;
+  const label = heading.querySelector(".eyebrow");
+  const title = heading.querySelector("h2");
+  const support = [...heading.children].find(
+    (item) => item.matches("p") && !item.matches(".eyebrow"),
+  );
+
+  if (label) {
+    timelineInstance.from(label, {
+      autoAlpha: 0,
+      y: distance,
+      duration: 0.65,
+    }, position);
+  }
+  if (title) {
+    timelineInstance.fromTo(
+      title,
+      {
+        autoAlpha: 0,
+        y: distance + 6,
+        clipPath: "inset(0 0 100% 0)",
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        clipPath: "inset(0 0 0% 0)",
+        duration: 0.78,
+      },
+      position + 0.1,
+    );
+  }
+  if (support) {
+    timelineInstance.from(support, {
+      autoAlpha: 0,
+      y: distance,
+      duration: 0.7,
+    }, position + 0.22);
+  }
+};
+
 const initializeGsapMotion = () => {
   if (!motionLibrariesReady) {
     document.documentElement.classList.add("motion-fallback");
@@ -385,106 +405,276 @@ const initializeGsapMotion = () => {
 
   gsapApi.registerPlugin(scrollTriggerApi);
   document.documentElement.classList.add("motion-enhanced");
-
   const motionMedia = gsapApi.matchMedia();
 
   motionMedia.add(
     {
       allowMotion: "(prefers-reduced-motion: no-preference)",
+      reduceMotion: "(prefers-reduced-motion: reduce)",
       desktop: "(min-width: 821px)",
     },
     (context) => {
+      if (context.conditions.reduceMotion) {
+        gsapApi.set("[data-reveal], [data-scroll-depth]", {
+          clearProps: "all",
+        });
+        timeline?.style.setProperty("--timeline-progress", "1");
+        document.querySelector(".direction")?.style.setProperty(
+          "--direction-progress",
+          "1",
+        );
+        return undefined;
+      }
+
       if (!context.conditions.allowMotion) return undefined;
 
-      const revealDistance = context.conditions.desktop ? 24 : 16;
-      const heroCopy = document.querySelector('.hero-copy[data-reveal="hero"]');
-      const heroPortrait = document.querySelector('.hero-portrait[data-reveal="media"]');
+      const desktop = context.conditions.desktop;
+      const distance = desktop ? 30 : 20;
+      const heroCopy = document.querySelector(".hero-copy");
+      const heroPortrait = document.querySelector(".hero-portrait");
+      const portraitFrame = heroPortrait?.querySelector(".portrait-frame");
+      const portraitImage = portraitFrame?.querySelector("img");
       const availability = heroPortrait?.querySelector(".portrait-availability");
+      const portraitCaption = heroPortrait?.querySelector("figcaption");
 
       if (heroCopy) {
-        const heroItems = [...heroCopy.children];
-        const heroTimeline = gsapApi.timeline({
+        const kicker = heroCopy.querySelector(".section-kicker");
+        const intro = heroCopy.querySelector(".hero-intro");
+        const name = heroCopy.querySelector("h1");
+        const role = heroCopy.querySelector(".hero-role");
+        const summary = heroCopy.querySelector(".hero-summary");
+        const actions = heroCopy.querySelector(".hero-actions");
+        const meta = heroCopy.querySelector(".hero-meta");
+        const socials = heroCopy.querySelector(".hero-socials");
+        const heroEntrance = gsapApi.timeline({
           defaults: { ease: "power3.out" },
         });
 
-        gsapApi.set(heroItems, { autoAlpha: 0, y: 14 });
-        if (heroPortrait) {
-          gsapApi.set(heroPortrait, {
+        heroEntrance
+          .from(kicker, {
             autoAlpha: 0,
-            clipPath: "inset(0 0 0 10%)",
-          });
-        }
-        if (availability) gsapApi.set(availability, { autoAlpha: 0 });
-
-        heroTimeline
-          .to(heroItems, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.72,
-            stagger: 0.06,
+            y: desktop ? 30 : 20,
+            duration: 0.68,
           })
-          .to(
-            heroPortrait,
+          .from(intro, {
+            autoAlpha: 0,
+            y: desktop ? 28 : 18,
+            duration: 0.66,
+          }, 0.14)
+          .fromTo(
+            name,
+            {
+              autoAlpha: 0,
+              y: desktop ? 42 : 28,
+              clipPath: "inset(0 0 100% 0)",
+            },
             {
               autoAlpha: 1,
-              clipPath: "inset(0 0 0 0%)",
-              duration: 0.88,
+              y: 0,
+              clipPath: "inset(0 0 0% 0)",
+              duration: 0.86,
             },
-            0.12,
+            0.26,
           )
-          .to(
-            availability,
+          .from([role, summary], {
+            autoAlpha: 0,
+            y: desktop ? 32 : 22,
+            duration: 0.72,
+            stagger: 0.1,
+          }, 0.48)
+          .from(actions, {
+            autoAlpha: 0,
+            y: desktop ? 30 : 20,
+            duration: 0.7,
+          }, 0.72)
+          .fromTo(
+            portraitFrame,
+            {
+              autoAlpha: 0,
+              clipPath: "inset(0 100% 0 0)",
+            },
             {
               autoAlpha: 1,
-              duration: 0.46,
+              clipPath: "inset(0 0% 0 0)",
+              duration: 0.9,
             },
-            0.48,
-          );
+            0.6,
+          )
+          .fromTo(
+            portraitImage,
+            { "--image-scale": 1.09 },
+            { "--image-scale": 1.04, duration: 0.92 },
+            0.6,
+          )
+          .from(availability, {
+            autoAlpha: 0,
+            x: desktop ? 38 : 24,
+            duration: 0.7,
+          }, 0.96)
+          .from([meta, portraitCaption], {
+            autoAlpha: 0,
+            y: desktop ? 24 : 16,
+            duration: 0.64,
+            stagger: 0.08,
+          }, 1.02)
+          .from(socials, {
+            autoAlpha: 0,
+            y: desktop ? 18 : 12,
+            duration: 0.58,
+          }, 1.1);
       }
 
-      const contentReveals = gsapApi.utils
-        .toArray("[data-reveal]")
-        .filter(
-          (item) =>
-            item.dataset.reveal !== "hero" &&
-            item.dataset.reveal !== "media",
-        );
-      const mediaReveals = gsapApi.utils
-        .toArray('[data-reveal="media"]')
-        .filter((item) => item !== heroPortrait);
-
-      gsapApi.set(contentReveals, { autoAlpha: 0, y: revealDistance });
-      scrollTriggerApi.batch(contentReveals, {
-        start: "top 88%",
-        once: true,
-        onEnter: (batch) =>
-          gsapApi.to(batch, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.78,
-            ease: "power3.out",
+      const aboutSection = document.querySelector("#about");
+      if (aboutSection) {
+        const aboutMotion = gsapApi.timeline({ defaults: { ease: "power3.out" } });
+        animateHeading(aboutMotion, aboutSection.querySelector(".editorial-heading"), 0, distance);
+        aboutMotion
+          .from(aboutSection.querySelectorAll(".prose p"), {
+            autoAlpha: 0,
+            y: distance,
+            duration: 0.72,
             stagger: 0.08,
-            overwrite: true,
-          }),
-      });
+          }, 0.3)
+          .from(aboutSection.querySelector(".focus-note"), {
+            autoAlpha: 0,
+            x: desktop ? 30 : 20,
+            duration: 0.76,
+          }, 0.44);
+        addOnceTrigger(aboutMotion, aboutSection, "top 80%");
+      }
 
-      gsapApi.set(mediaReveals, {
-        autoAlpha: 0,
-        clipPath: "inset(0 0 0 9%)",
-      });
-      scrollTriggerApi.batch(mediaReveals, {
-        start: "top 90%",
-        once: true,
-        onEnter: (batch) =>
-          gsapApi.to(batch, {
-            autoAlpha: 1,
-            clipPath: "inset(0 0 0 0%)",
-            duration: 0.86,
-            ease: "power3.out",
-            stagger: 0.06,
-            overwrite: true,
-          }),
-      });
+      const skillsSection = document.querySelector("#skills");
+      if (skillsSection) {
+        const skillsMotion = gsapApi.timeline({ defaults: { ease: "power3.out" } });
+        animateHeading(skillsMotion, skillsSection.querySelector(".split-heading"), 0, distance);
+        skillsMotion.from(skillsSection.querySelectorAll(".skill-group"), {
+          autoAlpha: 0,
+          y: desktop ? 32 : 24,
+          duration: 0.72,
+          stagger: 0.1,
+        }, 0.34);
+        addOnceTrigger(skillsMotion, skillsSection, "top 80%");
+      }
+
+      const projectsSection = document.querySelector("#projects");
+      const projectHeading = projectsSection?.querySelector(":scope > .split-heading");
+      if (projectHeading) {
+        const projectsHeadingMotion = gsapApi.timeline({
+          defaults: { ease: "power3.out" },
+        });
+        animateHeading(projectsHeadingMotion, projectHeading, 0, distance);
+        addOnceTrigger(projectsHeadingMotion, projectHeading, "top 82%");
+      }
+
+      const featuredProject = document.querySelector(".featured-project");
+      if (featuredProject) {
+        const featuredMedia = featuredProject.querySelector(".featured-media");
+        const featuredImage = featuredMedia?.querySelector("img");
+        const featuredItems = featuredProject.querySelectorAll(
+          ".featured-copy > *:not(.project-label)",
+        );
+        const featuredMotion = gsapApi.timeline({
+          defaults: { ease: "power3.out" },
+        });
+        featuredMotion
+          .from(featuredProject.querySelector(".project-label"), {
+            autoAlpha: 0,
+            y: distance,
+            duration: 0.64,
+          })
+          .fromTo(
+            featuredMedia,
+            {
+              autoAlpha: 0,
+              clipPath: "inset(0 100% 0 0)",
+            },
+            {
+              autoAlpha: 1,
+              clipPath: "inset(0 0% 0 0)",
+              duration: 0.9,
+            },
+            0.1,
+          )
+          .fromTo(
+            featuredImage,
+            { "--project-image-scale": 1.08 },
+            { "--project-image-scale": 1.05, duration: 0.95 },
+            0.1,
+          )
+          .from(featuredItems, {
+            autoAlpha: 0,
+            x: desktop ? 34 : 22,
+            duration: 0.72,
+            stagger: 0.07,
+          }, 0.24);
+        addOnceTrigger(featuredMotion, featuredProject, "top 82%");
+      }
+
+      const projectGrid = document.querySelector(".project-grid");
+      if (projectGrid) {
+        const cards = projectGrid.querySelectorAll(".project-card");
+        const cardMedia = projectGrid.querySelectorAll(".project-card-media");
+        const cardImages = projectGrid.querySelectorAll(".project-card-media img");
+        const cardsMotion = gsapApi.timeline({ defaults: { ease: "power3.out" } });
+        cardsMotion
+          .from(cards, {
+            autoAlpha: 0,
+            y: desktop ? 36 : 26,
+            duration: 0.72,
+            stagger: 0.1,
+          })
+          .fromTo(
+            cardMedia,
+            { clipPath: "inset(0 100% 0 0)" },
+            {
+              clipPath: "inset(0 0% 0 0)",
+              duration: 0.76,
+              stagger: 0.1,
+            },
+            0.08,
+          )
+          .fromTo(
+            cardImages,
+            { "--card-image-scale": 1.08 },
+            {
+              "--card-image-scale": 1.04,
+              duration: 0.82,
+              stagger: 0.1,
+            },
+            0.08,
+          );
+        addOnceTrigger(cardsMotion, projectGrid, "top 84%");
+      }
+
+      const projectArchive = document.querySelector(".project-archive");
+      if (projectArchive) {
+        const archiveMotion = gsapApi.from(projectArchive, {
+          autoAlpha: 0,
+          y: distance,
+          duration: 0.72,
+          ease: "power3.out",
+          paused: true,
+        });
+        addOnceTrigger(archiveMotion, projectArchive, "top 86%");
+      }
+
+      const journeySection = document.querySelector("#journey");
+      if (journeySection) {
+        const journeyMotion = gsapApi.timeline({ defaults: { ease: "power3.out" } });
+        animateHeading(journeyMotion, journeySection.querySelector(".split-heading"), 0, distance);
+        journeyMotion
+          .from(journeySection.querySelector(".education-block"), {
+            autoAlpha: 0,
+            y: desktop ? 34 : 24,
+            duration: 0.74,
+          }, 0.3)
+          .from(journeySection.querySelector(".learning-block"), {
+            autoAlpha: 0,
+            y: desktop ? 30 : 22,
+            duration: 0.74,
+          }, 0.42);
+        addOnceTrigger(journeyMotion, journeySection, "top 80%");
+      }
 
       if (timeline) {
         gsapApi.fromTo(
@@ -497,120 +687,232 @@ const initializeGsapMotion = () => {
               trigger: timeline,
               start: "top 84%",
               end: "bottom 28%",
-              scrub: 0.5,
+              scrub: 0.4,
               invalidateOnRefresh: true,
             },
           },
         );
       }
 
-      if (context.conditions.desktop && hero) {
-        const atmosphere = hero.querySelector('[data-scroll-depth="atmosphere"]');
-        const portraitFrame = hero.querySelector(
-          '[data-scroll-depth="portrait-frame"]',
-        );
-        const portraitImage = hero.querySelector(
-          '[data-scroll-depth="portrait-image"]',
-        );
-        const availabilityCard = hero.querySelector(
-          '[data-scroll-depth="availability"]',
-        );
-        const heroScrollTrigger = {
-          trigger: hero,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.65,
-          invalidateOnRefresh: true,
-        };
+      const direction = document.querySelector(".direction");
+      if (direction) {
+        const directionMotion = gsapApi.timeline({ defaults: { ease: "power3.out" } });
+        directionMotion
+          .from(direction.querySelector(".direction-heading"), {
+            autoAlpha: 0,
+            y: distance,
+            duration: 0.7,
+          })
+          .fromTo(
+            direction,
+            { "--direction-progress": 0 },
+            { "--direction-progress": 1, duration: 0.72 },
+            0.12,
+          )
+          .from(direction.querySelectorAll("li"), {
+            autoAlpha: 0,
+            y: desktop ? 28 : 20,
+            duration: 0.68,
+            stagger: 0.12,
+          }, 0.18);
+        addOnceTrigger(directionMotion, direction, "top 84%");
+      }
 
-        gsapApi.fromTo(
-          atmosphere,
-          { "--atmosphere-depth": "-10px" },
-          {
-            "--atmosphere-depth": "24px",
-            ease: "none",
-            scrollTrigger: heroScrollTrigger,
-          },
-        );
-        gsapApi.fromTo(
-          portraitFrame,
-          { "--scroll-depth": "3px" },
-          {
-            "--scroll-depth": "-10px",
-            ease: "none",
-            scrollTrigger: heroScrollTrigger,
-          },
-        );
-        gsapApi.fromTo(
-          portraitImage,
-          { "--image-depth": "-6px" },
-          {
-            "--image-depth": "7px",
-            ease: "none",
-            scrollTrigger: heroScrollTrigger,
-          },
-        );
-        gsapApi.fromTo(
-          availabilityCard,
-          { "--availability-depth": "2px" },
-          {
-            "--availability-depth": "-5px",
-            ease: "none",
-            scrollTrigger: heroScrollTrigger,
-          },
-        );
+      const resumeBand = document.querySelector(".resume-band .section-shell");
+      if (resumeBand) {
+        const resumeMotion = gsapApi.from(resumeBand.children, {
+          autoAlpha: 0,
+          y: distance,
+          duration: 0.72,
+          stagger: 0.1,
+          ease: "power3.out",
+          paused: true,
+        });
+        addOnceTrigger(resumeMotion, resumeBand, "top 86%");
+      }
 
-        const featuredImage = document.querySelector(
-          '[data-scroll-depth="project-image"]',
-        );
-        if (featuredImage) {
-          gsapApi.fromTo(
-            featuredImage,
-            { "--project-image-depth": "-4px" },
+      const contactSection = document.querySelector("#contact");
+      if (contactSection) {
+        const contactHeading = contactSection.querySelector(".contact-heading");
+        const contactRows = contactSection.querySelectorAll(".contact-list > *");
+        const contactMotion = gsapApi.timeline({ defaults: { ease: "power3.out" } });
+        contactMotion
+          .from(contactHeading.querySelector(".eyebrow"), {
+            autoAlpha: 0,
+            y: distance,
+            duration: 0.62,
+          })
+          .fromTo(
+            contactHeading.querySelector("h2"),
             {
-              "--project-image-depth": "4px",
-              ease: "none",
-              scrollTrigger: {
-                trigger: featuredImage.closest(".featured-media"),
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 0.7,
-                invalidateOnRefresh: true,
-              },
+              autoAlpha: 0,
+              y: distance + 6,
+              clipPath: "inset(0 0 100% 0)",
             },
-          );
-        }
-
-        document.querySelectorAll(".skills, .journey").forEach((section) => {
-          gsapApi.fromTo(
-            section,
-            { "--section-wash-y": "-18px" },
             {
-              "--section-wash-y": "22px",
+              autoAlpha: 1,
+              y: 0,
+              clipPath: "inset(0 0 0% 0)",
+              duration: 0.78,
+            },
+            0.1,
+          )
+          .from(contactHeading.querySelector(":scope > p:not(.eyebrow)"), {
+            autoAlpha: 0,
+            y: distance,
+            duration: 0.68,
+          }, 0.22)
+          .from(contactRows, {
+            autoAlpha: 0,
+            y: desktop ? 22 : 16,
+            duration: 0.6,
+            stagger: 0.08,
+          }, 0.3)
+          .from(contactHeading.querySelector(".button"), {
+            autoAlpha: 0,
+            y: desktop ? 24 : 16,
+            duration: 0.66,
+          }, 0.64);
+        addOnceTrigger(contactMotion, contactSection, "top 82%");
+      }
+
+      const atmosphere = hero?.querySelector('[data-scroll-depth="atmosphere"]');
+      const heroFrame = hero?.querySelector('[data-scroll-depth="portrait-frame"]');
+      const heroImage = hero?.querySelector('[data-scroll-depth="portrait-image"]');
+      const availabilityCard = hero?.querySelector('[data-scroll-depth="availability"]');
+
+      if (hero && atmosphere && heroFrame && heroImage && availabilityCard) {
+        const heroDepth = gsapApi.timeline({
+          scrollTrigger: {
+            trigger: hero,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.4,
+            invalidateOnRefresh: true,
+          },
+        });
+        const heroDepthScale = desktop ? 1 : 0.5;
+        heroDepth
+          .fromTo(
+            atmosphere,
+            { "--atmosphere-depth": `${-16 * heroDepthScale}px` },
+            {
+              "--atmosphere-depth": `${24 * heroDepthScale}px`,
+              ease: "none",
+            },
+            0,
+          )
+          .fromTo(
+            heroFrame,
+            { "--scroll-depth": `${9 * heroDepthScale}px` },
+            {
+              "--scroll-depth": `${-9 * heroDepthScale}px`,
+              ease: "none",
+            },
+            0,
+          )
+          .fromTo(
+            heroImage,
+            { "--image-depth": `${-6 * heroDepthScale}px` },
+            {
+              "--image-depth": `${8 * heroDepthScale}px`,
+              ease: "none",
+            },
+            0,
+          )
+          .fromTo(
+            availabilityCard,
+            { "--availability-depth": `${5 * heroDepthScale}px` },
+            {
+              "--availability-depth": `${-7 * heroDepthScale}px`,
+              ease: "none",
+            },
+            0,
+          );
+      }
+
+      const aboutAccent = document.querySelector("#about");
+      if (aboutAccent) {
+        gsapApi.fromTo(
+          aboutAccent,
+          { "--about-accent-y": desktop ? "-16px" : "-8px" },
+          {
+            "--about-accent-y": desktop ? "18px" : "9px",
+            ease: "none",
+            scrollTrigger: {
+              trigger: aboutAccent,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.4,
+              invalidateOnRefresh: true,
+            },
+          },
+        );
+      }
+
+      const featuredImage = document.querySelector('[data-scroll-depth="project-image"]');
+      if (featuredImage) {
+        const projectDepth = desktop ? 12 : 6;
+        gsapApi.fromTo(
+          featuredImage,
+          { "--project-image-depth": `${-projectDepth}px` },
+          {
+            "--project-image-depth": `${projectDepth}px`,
+            ease: "none",
+            scrollTrigger: {
+              trigger: featuredImage.closest(".featured-media"),
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.4,
+              invalidateOnRefresh: true,
+            },
+          },
+        );
+      }
+
+      document
+        .querySelectorAll('[data-scroll-depth="supporting-project-image"]')
+        .forEach((image) => {
+          const projectDepth = desktop ? 6 : 3;
+          gsapApi.fromTo(
+            image,
+            { "--supporting-image-depth": `${-projectDepth}px` },
+            {
+              "--supporting-image-depth": `${projectDepth}px`,
               ease: "none",
               scrollTrigger: {
-                trigger: section,
+                trigger: image.closest(".project-card-media"),
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 0.8,
+                scrub: 0.4,
                 invalidateOnRefresh: true,
               },
             },
           );
         });
-      }
 
-      return () => {
-        document
-          .querySelectorAll("[data-reveal]")
-          .forEach((item) => item.removeAttribute("style"));
-      };
+      return () => resetPointerEffects();
     },
   );
 
-  const refreshMotion = () => scrollTriggerApi.refresh();
-  document.fonts?.ready.then(refreshMotion);
-  window.addEventListener("load", refreshMotion, { once: true });
+  const updateTriggerCount = () => {
+    document.documentElement.dataset.scrollTriggerCount = String(
+      scrollTriggerApi.getAll().length,
+    );
+  };
+  scrollTriggerApi.addEventListener("refresh", updateTriggerCount);
+  document.fonts?.ready.then(() => {
+    scrollTriggerApi.refresh();
+    updateTriggerCount();
+  });
+  window.addEventListener(
+    "load",
+    () => {
+      scrollTriggerApi.refresh();
+      updateTriggerCount();
+    },
+    { once: true },
+  );
 };
 
 enablePointerEffects();
@@ -631,13 +933,11 @@ if ("IntersectionObserver" in window) {
   const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        updateActiveNavigation(`#${entry.target.id}`);
+        if (entry.isIntersecting) updateActiveNavigation(`#${entry.target.id}`);
       });
     },
     { rootMargin: "-28% 0px -62% 0px", threshold: 0 },
   );
-
   sections.forEach((section) => sectionObserver.observe(section));
 
   if (footer && backToTop) {
