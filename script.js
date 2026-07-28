@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-links");
@@ -8,13 +10,18 @@ const footer = document.querySelector(".site-footer");
 const year = document.querySelector("#current-year");
 const revealItems = document.querySelectorAll("[data-reveal]");
 const accordionButtons = document.querySelectorAll(".project-details-toggle");
+const hero = document.querySelector("[data-parallax-root]");
+const timeline = document.querySelector("[data-timeline]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const finePointer = window.matchMedia(
+  "(hover: hover) and (pointer: fine) and (min-width: 900px)",
+);
 
 if (year) {
   year.textContent = new Date().getFullYear();
 }
 
-const setMenuState = (isOpen) => {
+const setMenuState = (isOpen, moveFocus = false) => {
   if (!navToggle || !navMenu) return;
 
   navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -25,11 +32,15 @@ const setMenuState = (isOpen) => {
   navToggle.classList.toggle("is-open", isOpen);
   navMenu.classList.toggle("is-open", isOpen);
   document.body.classList.toggle("menu-open", isOpen);
+
+  if (isOpen && moveFocus) {
+    navMenu.querySelector("a")?.focus();
+  }
 };
 
 navToggle?.addEventListener("click", () => {
   const isOpen = navToggle.getAttribute("aria-expanded") !== "true";
-  setMenuState(isOpen);
+  setMenuState(isOpen, isOpen);
 });
 
 navLinks.forEach((link) => {
@@ -43,16 +54,36 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+document.addEventListener("pointerdown", (event) => {
+  if (
+    navToggle?.getAttribute("aria-expanded") === "true" &&
+    !event.target.closest(".site-nav")
+  ) {
+    setMenuState(false);
+  }
+});
+
 window.addEventListener("resize", () => {
   if (window.innerWidth > 820) setMenuState(false);
 });
 
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 let scrollFrame;
 
+const updateTimeline = () => {
+  if (!timeline) return;
+
+  const rect = timeline.getBoundingClientRect();
+  const start = window.innerHeight * 0.84;
+  const end = window.innerHeight * 0.24;
+  const progress = clamp((start - rect.top) / (rect.height + start - end));
+  timeline.style.setProperty("--timeline-progress", progress.toFixed(3));
+};
+
 const updateScrollUI = () => {
-  const hasScrolled = window.scrollY > 24;
-  header?.classList.toggle("is-scrolled", hasScrolled);
+  header?.classList.toggle("is-scrolled", window.scrollY > 24);
   backToTop?.classList.toggle("is-visible", window.scrollY > 600);
+  updateTimeline();
   scrollFrame = undefined;
 };
 
@@ -84,7 +115,120 @@ accordionButtons.forEach((button) => {
   });
 });
 
-document.documentElement.classList.add("js");
+const resetPointerEffects = () => {
+  hero?.classList.remove("is-pointer-active");
+  hero?.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
+    layer.style.setProperty("--parallax-x", "0px");
+    layer.style.setProperty("--parallax-y", "0px");
+  });
+
+  document.querySelectorAll("[data-tilt]").forEach((item) => {
+    item.style.setProperty("--tilt-x", "0deg");
+    item.style.setProperty("--tilt-y", "0deg");
+  });
+
+  document.querySelectorAll(".magnetic-action").forEach((item) => {
+    item.style.setProperty("--magnetic-x", "0px");
+    item.style.setProperty("--magnetic-y", "0px");
+  });
+};
+
+const enablePointerEffects = () => {
+  if (!finePointer.matches || reducedMotion.matches) {
+    resetPointerEffects();
+    return;
+  }
+
+  if (hero && !hero.dataset.pointerReady) {
+    hero.dataset.pointerReady = "true";
+
+    hero.addEventListener("pointerenter", () => {
+      hero.classList.add("is-pointer-active");
+    });
+
+    hero.addEventListener("pointermove", (event) => {
+      const rect = hero.getBoundingClientRect();
+      const x = clamp((event.clientX - rect.left) / rect.width);
+      const y = clamp((event.clientY - rect.top) / rect.height);
+
+      hero.style.setProperty("--spotlight-x", `${(x * 100).toFixed(1)}%`);
+      hero.style.setProperty("--spotlight-y", `${(y * 100).toFixed(1)}%`);
+
+      hero.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
+        const depth = Number(layer.dataset.parallaxLayer) || 6;
+        layer.style.setProperty("--parallax-x", `${((x - 0.5) * depth).toFixed(2)}px`);
+        layer.style.setProperty(
+          "--parallax-y",
+          `${((y - 0.5) * depth * 0.65).toFixed(2)}px`,
+        );
+      });
+    });
+
+    hero.addEventListener("pointerleave", resetPointerEffects);
+  }
+
+  document.querySelectorAll("[data-tilt]").forEach((item) => {
+    if (item.dataset.tiltReady) return;
+    item.dataset.tiltReady = "true";
+    let rect;
+    let tiltFrame;
+
+    item.addEventListener("pointerenter", () => {
+      rect = item.getBoundingClientRect();
+    });
+
+    item.addEventListener("pointermove", (event) => {
+      if (!rect || tiltFrame) return;
+
+      tiltFrame = window.requestAnimationFrame(() => {
+        const x = clamp((event.clientX - rect.left) / rect.width);
+        const y = clamp((event.clientY - rect.top) / rect.height);
+        item.style.setProperty("--tilt-x", `${((0.5 - y) * 5.5).toFixed(2)}deg`);
+        item.style.setProperty("--tilt-y", `${((x - 0.5) * 5.5).toFixed(2)}deg`);
+        tiltFrame = undefined;
+      });
+    });
+
+    item.addEventListener("pointerleave", () => {
+      rect = undefined;
+      item.style.setProperty("--tilt-x", "0deg");
+      item.style.setProperty("--tilt-y", "0deg");
+    });
+  });
+
+  document.querySelectorAll(".magnetic-action").forEach((item) => {
+    if (item.dataset.magneticReady) return;
+    item.dataset.magneticReady = "true";
+    let rect;
+
+    item.addEventListener("pointerenter", () => {
+      rect = item.getBoundingClientRect();
+    });
+
+    item.addEventListener("pointermove", (event) => {
+      if (!rect) return;
+      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
+      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 3;
+      item.style.setProperty("--magnetic-x", `${x.toFixed(2)}px`);
+      item.style.setProperty("--magnetic-y", `${y.toFixed(2)}px`);
+    });
+
+    item.addEventListener("pointerleave", () => {
+      rect = undefined;
+      item.style.setProperty("--magnetic-x", "0px");
+      item.style.setProperty("--magnetic-y", "0px");
+    });
+  });
+};
+
+enablePointerEffects();
+finePointer.addEventListener?.("change", enablePointerEffects);
+reducedMotion.addEventListener?.("change", () => {
+  if (reducedMotion.matches) {
+    revealItems.forEach((item) => item.classList.add("is-revealed"));
+  }
+  enablePointerEffects();
+});
 
 if ("IntersectionObserver" in window) {
   const sectionObserver = new IntersectionObserver(

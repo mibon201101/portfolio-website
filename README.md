@@ -5,11 +5,14 @@ A personal portfolio for Isfaq Hossain Ibon, a Computer Science and Engineering 
 ## Main features
 
 - Refined professional layout with restrained editorial typography
+- Layered hero composition with desktop-only parallax and a subtle spotlight
 - Accessible sticky navigation and mobile menu
 - Active-section navigation state
 - Featured and supporting project presentations
+- Project scope, contribution, current-state, and next-step notes
 - Professional grouped skills and tools
 - Accessible animated project-note accordions with no-JavaScript fallback content
+- Scroll-driven education progress line and reduced-motion support
 - Resume view and download actions
 - Subtle scroll reveals with reduced-motion support
 - SEO, Open Graph, and social card metadata
@@ -24,6 +27,9 @@ A personal portfolio for Isfaq Hossain Ibon, a Computer Science and Engineering 
 
 No UI framework or build step is required.
 
+An optional dependency-free `npm run build` command creates the static deployment output
+used by OpenAI Sites.
+
 ## Project structure
 
 ```text
@@ -31,6 +37,8 @@ portfolio-website/
 ├── index.html
 ├── style.css
 ├── script.js
+├── build.mjs
+├── package.json
 ├── README.md
 └── assets/
     ├── profile.png
@@ -39,8 +47,9 @@ portfolio-website/
     ├── project-crimealert.png
     ├── project-login.png
     ├── og-portfolio.png
-    ├── portfolio-preview-current.jpg
-    ├── portfolio-mobile-preview-current.jpg
+    ├── og-portfolio-v2.png
+    ├── portfolio-preview.jpg
+    ├── portfolio-mobile-preview.jpg
     └── resume.pdf
 ```
 
@@ -67,15 +76,18 @@ Expected live website:
 
 If the repository name changes, update the canonical and Open Graph URLs in `index.html`.
 
-## Screenshots
+## Baseline screenshots
 
-### Desktop Preview
+These screenshots are retained as a visual reference for the version before the latest
+refinement.
 
-![Current portfolio homepage preview](assets/portfolio-preview.jpg)
+### Desktop baseline
 
-### Mobile Preview
+![Previous portfolio homepage preview](assets/portfolio-preview.jpg)
 
-![Current portfolio mobile preview](assets/portfolio-mobile-preview.jpg)
+### Mobile baseline
+
+![Previous portfolio mobile preview](assets/portfolio-mobile-preview.jpg)
 
 ## Content still to add
 

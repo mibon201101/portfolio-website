@@ -26,8 +26,10 @@
     <meta property="og:url" content="https://mibon201101.github.io/portfolio-website/" />
     <meta
       property="og:image"
-      content="https://mibon201101.github.io/portfolio-website/assets/og-portfolio.png"
+      content="https://mibon201101.github.io/portfolio-website/assets/og-portfolio-v2.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Editorial portfolio card for Isfaq Hossain Ibon" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -40,7 +42,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://mibon201101.github.io/portfolio-website/assets/og-portfolio.png"
+      content="https://mibon201101.github.io/portfolio-website/assets/og-portfolio-v2.png"
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -86,24 +88,36 @@
     </header>
 
     <main id="main-content">
-      <section class="hero section-shell" id="home" aria-labelledby="hero-title">
-        <div class="hero-copy" data-reveal>
+      <section
+        class="hero section-shell"
+        id="home"
+        aria-labelledby="hero-title"
+        data-parallax-root
+        data-spotlight
+      >
+        <div class="hero-atmosphere" aria-hidden="true">
+          <span class="mist mist-one"></span>
+          <span class="mist mist-two"></span>
+          <span class="hero-gridline"></span>
+        </div>
+
+        <div class="hero-copy" data-reveal="hero">
           <div class="section-kicker">
             <span>CSE Portfolio</span>
           </div>
 
-          <p class="hero-intro">Hello, I’m Isfaq.</p>
+          <p class="hero-intro">Hello — I’m Isfaq.</p>
           <h1 id="hero-title">Isfaq Hossain Ibon</h1>
           <p class="hero-role">CSE Student &amp; Aspiring Web Developer</p>
           <p class="availability"><i aria-hidden="true"></i> Open to opportunities</p>
           <p class="hero-summary">
-            I build practical, user-focused web applications using JavaScript and modern
-            frontend technologies, while growing toward full-stack development.
+            I build practical web applications while strengthening my JavaScript, frontend,
+            and full-stack development skills through real projects.
           </p>
 
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button button-primary" href="#projects">
-              Explore projects <span aria-hidden="true">↓</span>
+            <a class="button button-primary magnetic-action" href="#projects">
+              View projects <span aria-hidden="true">↓</span>
             </a>
             <a
               class="button button-secondary"
@@ -112,6 +126,9 @@
               rel="noopener noreferrer"
             >
               View resume <span aria-hidden="true">↗</span>
+            </a>
+            <a class="hero-contact-link" href="#contact">
+              Contact me <span aria-hidden="true">↘</span>
             </a>
           </div>
 
@@ -144,8 +161,9 @@
           </div>
         </div>
 
-        <figure class="hero-portrait" data-reveal>
-          <div class="portrait-frame">
+        <figure class="hero-portrait" data-reveal="hero">
+          <span class="portrait-orbit" aria-hidden="true"></span>
+          <div class="portrait-frame" data-parallax-layer="8">
             <img
               src="./assets/profile.png"
               alt="Isfaq Hossain Ibon wearing a navy suit"
@@ -154,10 +172,15 @@
               decoding="async"
               fetchpriority="high"
             />
+            <span class="portrait-shade" aria-hidden="true"></span>
+          </div>
+          <div class="portrait-status" aria-hidden="true">
+            <span>Available</span>
+            <strong>Internships · Junior roles</strong>
           </div>
           <figcaption>
             <span>Computer Science &amp; Engineering</span>
-            <span>UIU · Dhaka</span>
+            <span>01 / Dhaka</span>
           </figcaption>
         </figure>
       </section>
@@ -173,7 +196,7 @@
             <p>
               I am a Computer Science and Engineering student at United International
               University with a strong interest in web development and software engineering.
-              I enjoy turning ideas into practical applications, solving problems, and
+              I enjoy building practical applications, solving problems, and
               learning through academic and personal projects.
             </p>
             <p>
@@ -217,7 +240,7 @@
           <div class="skill-grid">
             <article class="skill-group" data-reveal>
               <p class="skill-caption">Working knowledge</p>
-              <h3>Core Skills</h3>
+              <h3>Core Development</h3>
               <ul class="skill-tags" aria-label="Core skills">
                 <li>HTML</li>
                 <li>CSS</li>
@@ -231,7 +254,7 @@
 
             <article class="skill-group" data-reveal>
               <p class="skill-caption">Foundational exposure</p>
-              <h3>Foundational Knowledge</h3>
+              <h3>Programming and Data</h3>
               <ul class="skill-tags" aria-label="Programming and data technologies">
                 <li>C</li>
                 <li>C++</li>
@@ -246,7 +269,7 @@
 
             <article class="skill-group" data-reveal>
               <p class="skill-caption">Everyday workflow</p>
-              <h3>Tools I Use</h3>
+              <h3>Tools</h3>
               <ul class="skill-tags" aria-label="Development tools">
                 <li>Visual Studio Code</li>
                 <li>GitHub</li>
@@ -291,30 +314,169 @@
         </header>
 
         <article class="featured-project" data-reveal>
-          <div class="featured-media">
+          <div class="featured-media" data-reveal="media" data-tilt>
             <img
-              src="./assets/project-fydp.png"
-              alt="AgriSoil Insight interface concept showing nutrient analysis, soil classification, and crop suitability results"
-              width="1672"
-              height="941"
+              src="./assets/project-orpon.png"
+              alt="Orpon fundraising platform homepage with campaign navigation and urgent campaign cards"
+              width="1812"
+              height="956"
               loading="lazy"
               decoding="async"
             />
-            <span>Interface concept</span>
+            <span>Frontend prototype</span>
           </div>
           <div class="featured-copy">
-            <p class="project-label">01 — Featured Academic Project</p>
-            <h3>
-              Agricultural Soil Nutrient Analysis, Classification and Crop Suitability
-              Prediction
-            </h3>
+            <div class="project-heading-row">
+              <p class="project-label">01 — Featured web project</p>
+              <p class="project-status"><i aria-hidden="true"></i> In development</p>
+            </div>
+            <h3>Orpon</h3>
             <p>
-              An academic machine-learning project exploring soil nutrient analysis, soil
-              classification, and crop suitability prediction. The work includes data
-              preprocessing, model evaluation, and research-focused analysis; it is not
-              presented as a completed commercial product.
+              A fundraising platform concept designed to make campaign discovery and giving
+              flows easier to understand. I focused on a clear responsive interface, readable
+              campaign information, and a visual system built around trust.
             </p>
-            <ul class="project-tags" aria-label="Project technologies">
+            <dl class="project-facts">
+              <div>
+                <dt>Problem</dt>
+                <dd>Fundraising information can feel scattered or difficult to evaluate.</dd>
+              </div>
+              <div>
+                <dt>My contribution</dt>
+                <dd>Frontend structure, interface styling, and responsive presentation.</dd>
+              </div>
+              <div>
+                <dt>Current state</dt>
+                <dd>Working frontend prototype; no public live demo is claimed.</dd>
+              </div>
+              <div>
+                <dt>Next</dt>
+                <dd>Connect verified campaign data and document the complete feature set.</dd>
+              </div>
+            </dl>
+            <ul class="project-tags" aria-label="Orpon technologies">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Responsive UI</li>
+            </ul>
+            <p class="project-link-note">Repository and live demo are not publicly verified yet.</p>
+          </div>
+        </article>
+
+        <div class="project-grid">
+          <article class="project-card project-card-compact" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">02 — DBMS project</p>
+              <p class="project-status"><i aria-hidden="true"></i> Prototype</p>
+            </div>
+            <div class="project-card-media" data-reveal="media" data-tilt>
+              <img
+                src="./assets/project-crimealert.png"
+                alt="Crime Alert interface showing community reporting, map, and safety features"
+                width="595"
+                height="280"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Crime Alert</h3>
+            <p>
+              A database-driven community reporting project for recording incidents and making
+              local safety information easier to review.
+            </p>
+            <ul class="project-tags" aria-label="Crime Alert technologies">
+              <li>PHP</li>
+              <li>MySQL</li>
+              <li>HTML</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-2"
+              >
+                <span>Problem, contribution &amp; next steps</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-2" aria-hidden="false">
+                <div>
+                  <p><strong>Problem:</strong> incident information is often hard to organize and review in one place.</p>
+                  <p><strong>Contribution:</strong> database structure and interface work for reports, access, and map-based context.</p>
+                  <p><strong>Next:</strong> verify the deployed feature set and publish technical documentation.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card project-card-wide" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">03 — Student productivity</p>
+              <p class="project-status"><i aria-hidden="true"></i> UI prototype</p>
+            </div>
+            <div class="project-card-media" data-reveal="media">
+              <img
+                src="./assets/project-login.png"
+                alt="Student Task Manager dashboard with task controls, status summaries, filters, and deadlines"
+                width="1918"
+                height="956"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Student Task Manager</h3>
+            <p>
+              A student-focused interface for creating work, organizing deadlines, reviewing
+              status, and understanding a simple picture of current tasks.
+            </p>
+            <ul class="project-tags" aria-label="Student Task Manager technologies">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <div class="project-details">
+              <button
+                class="project-details-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="project-details-3"
+              >
+                <span>Problem, contribution &amp; next steps</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div class="project-details-panel" id="project-details-3" aria-hidden="false">
+                <div>
+                  <p><strong>Problem:</strong> coursework and deadlines are easy to lose across separate notes and tools.</p>
+                  <p><strong>Contribution:</strong> task flows, status filtering, deadline organization, and dashboard UI.</p>
+                  <p><strong>Next:</strong> add authentication and persistent storage; these are planned, not complete.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card project-card-wide" data-reveal>
+            <div class="project-card-top">
+              <p class="project-label">04 — Machine learning research</p>
+              <p class="project-status"><i aria-hidden="true"></i> Academic work</p>
+            </div>
+            <div class="project-card-media project-card-media-light" data-reveal="media">
+              <img
+                src="./assets/project-fydp.png"
+                alt="Agricultural soil analysis interface concept showing nutrient, classification, and crop suitability results"
+                width="1672"
+                height="941"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>Agricultural Soil Nutrient Analysis, Classification and Crop Suitability Prediction</h3>
+            <p>
+              An academic machine-learning project exploring how soil attributes can support
+              classification and crop-suitability analysis.
+            </p>
+            <ul class="project-tags" aria-label="Agricultural soil project technologies">
               <li>Python</li>
               <li>Machine Learning</li>
               <li>Data Preprocessing</li>
@@ -335,189 +497,31 @@
                 class="project-details-toggle"
                 type="button"
                 aria-expanded="false"
-                aria-controls="project-details-1"
-              >
-                <span>Scope &amp; next steps</span>
-                <i aria-hidden="true">+</i>
-              </button>
-              <div class="project-details-panel" id="project-details-1" aria-hidden="false">
-                <div>
-                  <p>
-                    <strong>Contribution:</strong> exploring a workflow for analyzing soil
-                    attributes and evaluating classification and crop-suitability models.
-                  </p>
-                  <p>
-                    <strong>Next:</strong> document the final dataset, model results, and
-                    implementation status in a public repository.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <div class="project-grid">
-          <article class="project-card project-card-wide" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">02 — Web project</p>
-              <span aria-hidden="true">ORP / 02</span>
-            </div>
-            <div class="project-card-media">
-              <img
-                src="./assets/project-orpon.png"
-                alt="Orpon fundraising platform homepage with campaign statistics and urgent campaign cards"
-                width="1812"
-                height="956"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <h3>Orpon</h3>
-            <p>
-              A practical web project focused on building a clear interface and an organized
-              project structure. It helped develop frontend implementation and
-              problem-solving skills.
-            </p>
-            <ul class="project-tags" aria-label="Orpon technologies">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <div class="project-details">
-              <button
-                class="project-details-toggle"
-                type="button"
-                aria-expanded="false"
-                aria-controls="project-details-2"
-              >
-                <span>Project notes</span>
-                <i aria-hidden="true">+</i>
-              </button>
-              <div class="project-details-panel" id="project-details-2" aria-hidden="false">
-                <div>
-                  <p>
-                    <strong>Current:</strong> portfolio records confirm a frontend web project;
-                    public source and demo links are currently unavailable.
-                  </p>
-                  <p>
-                    <strong>Next:</strong> document the verified feature set and implementation
-                    details when the project is published.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card project-card-compact" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">03 — DBMS project</p>
-              <span aria-hidden="true">DB / 03</span>
-            </div>
-            <div class="project-card-media">
-              <img
-                src="./assets/project-crimealert.png"
-                alt="Crime Alert interface with real-time reporting, interactive map, and community safety features"
-                width="595"
-                height="280"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <h3>Crime Alert</h3>
-            <p>
-              A database-driven community reporting project centered on recording incidents,
-              organizing crime reports, and making safety information easier to review.
-            </p>
-            <ul class="project-tags" aria-label="Crime Alert technologies">
-              <li>PHP</li>
-              <li>MySQL</li>
-              <li>HTML</li>
-              <li>JavaScript</li>
-            </ul>
-            <div class="project-details">
-              <button
-                class="project-details-toggle"
-                type="button"
-                aria-expanded="false"
-                aria-controls="project-details-3"
-              >
-                <span>Project notes</span>
-                <i aria-hidden="true">+</i>
-              </button>
-              <div class="project-details-panel" id="project-details-3" aria-hidden="false">
-                <div>
-                  <p>
-                    <strong>Scope:</strong> reporting, user access, map-based incident context,
-                    dashboards, and analytics were part of the project design.
-                  </p>
-                  <p>
-                    <strong>Next:</strong> verify the deployed feature set and supporting
-                    documentation before publishing direct project actions.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card project-card-compact" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">04 — Student productivity</p>
-              <span aria-hidden="true">STM / 04</span>
-            </div>
-            <div class="project-card-media">
-              <img
-                src="./assets/project-login.png"
-                alt="Student Task Manager dashboard with task controls, status summaries, filters, and deadlines"
-                width="1918"
-                height="956"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <h3>Student Task Manager</h3>
-            <p>
-              A student-focused task management interface for creating work, organizing
-              deadlines, reviewing task status, and seeing simple productivity statistics.
-            </p>
-            <ul class="project-tags" aria-label="Student Task Manager technologies">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <div class="project-details">
-              <button
-                class="project-details-toggle"
-                type="button"
-                aria-expanded="false"
                 aria-controls="project-details-4"
               >
-                <span>Current vs. planned</span>
+                <span>Problem, contribution &amp; next steps</span>
                 <i aria-hidden="true">+</i>
               </button>
               <div class="project-details-panel" id="project-details-4" aria-hidden="false">
                 <div>
-                  <p>
-                    <strong>Current:</strong> task creation, deadline organization, status
-                    tracking, and a statistics-focused interface.
-                  </p>
-                  <p>
-                    <strong>Planned:</strong> authentication, persistent storage, and backend
-                    improvements. These are not presented as complete.
-                  </p>
+                  <p><strong>Problem:</strong> soil and crop decisions benefit from clearer analysis of nutrient and classification data.</p>
+                  <p><strong>Contribution:</strong> data preprocessing, model evaluation, and research-focused analysis.</p>
+                  <p><strong>Next:</strong> publish the final dataset, measured results, and implementation status in a public repository.</p>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="project-card project-card-wide project-card-muted" data-reveal>
+          <article class="project-card project-card-compact project-card-muted" data-reveal>
             <div class="project-card-top">
               <p class="project-label">05 — Frontend reference</p>
-              <span aria-hidden="true">THK / 05</span>
+              <p class="project-status"><i aria-hidden="true"></i> Demo</p>
             </div>
+            <div class="project-monogram" aria-hidden="true">THK</div>
             <h3>Thikana Frontend Demo</h3>
             <p>
-              A separate visual and functional frontend reference implementation created to
-              explore layout, interface behavior, and responsive presentation.
+              A visual and functional frontend reference used to explore layout, interface
+              behavior, and responsive presentation.
             </p>
             <ul class="project-tags" aria-label="Thikana Frontend Demo technologies">
               <li>HTML</li>
@@ -532,19 +536,14 @@
                 aria-expanded="false"
                 aria-controls="project-details-5"
               >
-                <span>Project notes</span>
+                <span>Problem, contribution &amp; next steps</span>
                 <i aria-hidden="true">+</i>
               </button>
               <div class="project-details-panel" id="project-details-5" aria-hidden="false">
                 <div>
-                  <p>
-                    <strong>Contribution:</strong> translating a visual direction into a usable
-                    frontend reference.
-                  </p>
-                  <p>
-                    <strong>Next:</strong> document the implemented interactions when verified
-                    source and demo URLs become available.
-                  </p>
+                  <p><strong>Purpose:</strong> practice translating a visual direction into a usable frontend reference.</p>
+                  <p><strong>Contribution:</strong> layout implementation, responsive behavior, and interface styling.</p>
+                  <p><strong>Next:</strong> document verified interactions when source and demo URLs are available.</p>
                 </div>
               </div>
             </div>
@@ -598,8 +597,8 @@
         <div class="section-shell">
           <header class="split-heading" data-reveal>
             <div>
-              <p class="eyebrow">Academic foundations</p>
-              <h2 id="journey-title">Areas shaping my development journey.</h2>
+              <p class="eyebrow">Education &amp; growth</p>
+              <h2 id="journey-title">Education and growth</h2>
             </div>
             <p>
               My coursework and personal projects have helped me build foundations across
@@ -607,7 +606,10 @@
             </p>
           </header>
 
-          <div class="journey-grid">
+          <div class="journey-grid journey-timeline" data-timeline>
+            <span class="timeline-track" aria-hidden="true">
+              <i></i>
+            </span>
             <article class="education-block" data-reveal>
               <p class="timeline-marker">Present</p>
               <div>
@@ -650,8 +652,8 @@
 
           <div class="direction" data-reveal>
             <div class="direction-heading">
-              <p class="eyebrow">Where I’m going</p>
-              <h3>A practical path forward.</h3>
+              <p class="eyebrow">A practical path forward</p>
+              <h3>Where I’m going</h3>
             </div>
             <ol>
               <li>
@@ -665,7 +667,7 @@
               <li>
                 <span>Long term</span>
                 <p>
-                  Growing into a well-rounded software engineer who can build useful and
+                  Growing into a dependable software engineer who can build useful and
                   scalable products.
                 </p>
               </li>
@@ -711,7 +713,8 @@
             <h2 id="contact-title">Let’s build something useful.</h2>
             <p>
               I’m currently open to internships, junior developer opportunities,
-              collaborations, and meaningful projects where I can learn, contribute, and grow.
+              collaborations, and projects where I can learn, contribute, and grow in a real
+              development environment.
             </p>
             <a class="button button-primary" href="mailto:mdisfaqhossain@gmail.com">
               Email me <span aria-hidden="true">↗</span>
