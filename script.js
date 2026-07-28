@@ -10,7 +10,6 @@ const footer = document.querySelector(".site-footer");
 const year = document.querySelector("#current-year");
 const revealItems = document.querySelectorAll("[data-reveal]");
 const accordionButtons = document.querySelectorAll(".project-details-toggle");
-const hero = document.querySelector("[data-parallax-root]");
 const timeline = document.querySelector("[data-timeline]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const finePointer = window.matchMedia(
@@ -116,12 +115,6 @@ accordionButtons.forEach((button) => {
 });
 
 const resetPointerEffects = () => {
-  hero?.classList.remove("is-pointer-active");
-  hero?.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
-    layer.style.setProperty("--parallax-x", "0px");
-    layer.style.setProperty("--parallax-y", "0px");
-  });
-
   document.querySelectorAll("[data-tilt]").forEach((item) => {
     item.style.setProperty("--tilt-x", "0deg");
     item.style.setProperty("--tilt-y", "0deg");
@@ -137,34 +130,6 @@ const enablePointerEffects = () => {
   if (!finePointer.matches || reducedMotion.matches) {
     resetPointerEffects();
     return;
-  }
-
-  if (hero && !hero.dataset.pointerReady) {
-    hero.dataset.pointerReady = "true";
-
-    hero.addEventListener("pointerenter", () => {
-      hero.classList.add("is-pointer-active");
-    });
-
-    hero.addEventListener("pointermove", (event) => {
-      const rect = hero.getBoundingClientRect();
-      const x = clamp((event.clientX - rect.left) / rect.width);
-      const y = clamp((event.clientY - rect.top) / rect.height);
-
-      hero.style.setProperty("--spotlight-x", `${(x * 100).toFixed(1)}%`);
-      hero.style.setProperty("--spotlight-y", `${(y * 100).toFixed(1)}%`);
-
-      hero.querySelectorAll("[data-parallax-layer]").forEach((layer) => {
-        const depth = Number(layer.dataset.parallaxLayer) || 6;
-        layer.style.setProperty("--parallax-x", `${((x - 0.5) * depth).toFixed(2)}px`);
-        layer.style.setProperty(
-          "--parallax-y",
-          `${((y - 0.5) * depth * 0.65).toFixed(2)}px`,
-        );
-      });
-    });
-
-    hero.addEventListener("pointerleave", resetPointerEffects);
   }
 
   document.querySelectorAll("[data-tilt]").forEach((item) => {

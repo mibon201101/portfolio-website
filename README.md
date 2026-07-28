@@ -5,7 +5,7 @@ A personal portfolio for Isfaq Hossain Ibon, a Computer Science and Engineering 
 ## Main features
 
 - Refined professional layout with restrained editorial typography
-- Layered hero composition with desktop-only parallax and a subtle spotlight
+- Clean editorial hero composition with a restrained profile-image frame
 - Accessible sticky navigation and mobile menu
 - Active-section navigation state
 - Featured and supporting project presentations

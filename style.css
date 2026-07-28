@@ -432,97 +432,12 @@ section[id] {
 /* Hero */
 .hero {
   position: relative;
-  isolation: isolate;
   min-height: calc(100svh - var(--header-height));
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.62fr);
   align-items: center;
-  gap: clamp(3rem, 7vw, 6.5rem);
+  gap: clamp(3rem, 6vw, 5.5rem);
   padding-block: clamp(4rem, 7vw, 6.5rem);
-  --spotlight-x: 72%;
-  --spotlight-y: 32%;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0 -12vw;
-  z-index: -2;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(
-    340px circle at var(--spotlight-x) var(--spotlight-y),
-    rgba(41, 76, 98, 0.08),
-    transparent 72%
-  );
-  transition: opacity 400ms ease;
-}
-
-.hero.is-pointer-active::after {
-  opacity: 1;
-}
-
-.hero-atmosphere {
-  position: absolute;
-  inset: 0 -8vw;
-  z-index: -3;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.mist {
-  position: absolute;
-  width: clamp(20rem, 42vw, 38rem);
-  aspect-ratio: 1.5;
-  border-radius: 50%;
-  opacity: 0.15;
-  filter: blur(56px);
-  background: rgba(41, 76, 98, 0.3);
-  animation: mist-drift 18s ease-in-out infinite alternate;
-}
-
-.mist-one {
-  top: 6%;
-  right: -4%;
-}
-
-.mist-two {
-  right: 18%;
-  bottom: 4%;
-  width: clamp(16rem, 30vw, 28rem);
-  opacity: 0.08;
-  animation-duration: 24s;
-  animation-direction: alternate-reverse;
-}
-
-.hero-gridline {
-  position: absolute;
-  top: 12%;
-  right: 4%;
-  width: min(36vw, 430px);
-  aspect-ratio: 1;
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(41, 76, 98, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(41, 76, 98, 0.22) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: linear-gradient(145deg, #000, transparent 72%);
-}
-
-@keyframes mist-drift {
-  from {
-    transform: translate3d(-1.5%, -1%, 0) scale(0.98);
-  }
-
-  to {
-    transform: translate3d(2%, 1.5%, 0) scale(1.04);
-  }
-}
-
-.hero-copy,
-.hero-portrait {
-  position: relative;
-  z-index: 1;
 }
 
 .section-kicker {
@@ -684,24 +599,17 @@ section[id] {
 }
 
 .hero-portrait {
-  position: relative;
-  width: min(100%, 410px);
+  width: min(100%, 420px);
   justify-self: end;
-  perspective: 1000px;
 }
 
 .portrait-frame {
-  position: relative;
   overflow: hidden;
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   background: var(--section-background);
   box-shadow: var(--soft-shadow);
-  transform: translate3d(var(--parallax-x, 0), var(--parallax-y, 0), 0);
-  transition:
-    box-shadow var(--motion-slow) var(--motion-ease),
-    transform 600ms var(--motion-ease);
-  will-change: transform;
+  transition: box-shadow var(--motion-slow) var(--motion-ease);
 }
 
 .portrait-frame img {
@@ -721,57 +629,6 @@ section[id] {
 
 .hero-portrait:hover .portrait-frame {
   box-shadow: 0 18px 42px rgba(31, 37, 35, 0.1);
-}
-
-.portrait-shade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, transparent 58%, rgba(18, 28, 32, 0.22)),
-    linear-gradient(90deg, rgba(244, 241, 233, 0.06), transparent 36%);
-}
-
-.portrait-orbit {
-  position: absolute;
-  inset: -1.4rem 1.2rem 2.4rem -1.4rem;
-  z-index: -1;
-  border: 1px solid rgba(41, 76, 98, 0.22);
-  border-radius: calc(var(--border-radius) + 5px);
-  transform: rotate(-2deg);
-}
-
-.portrait-status {
-  position: absolute;
-  right: -1.1rem;
-  bottom: 3.35rem;
-  z-index: 2;
-  min-width: 180px;
-  padding: 0.75rem 0.9rem;
-  border: 1px solid rgba(213, 208, 197, 0.9);
-  border-radius: 8px;
-  background: rgba(251, 249, 244, 0.94);
-  box-shadow: 0 12px 32px rgba(28, 35, 34, 0.11);
-  backdrop-filter: blur(10px);
-}
-
-.portrait-status span,
-.portrait-status strong {
-  display: block;
-}
-
-.portrait-status span {
-  margin-bottom: 0.1rem;
-  color: var(--accent);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.portrait-status strong {
-  font-size: 0.72rem;
-  font-weight: 700;
 }
 
 .hero-portrait figcaption {
@@ -2054,17 +1911,6 @@ section[id] {
     padding-block: 3.5rem 4.75rem;
   }
 
-  .hero-gridline,
-  .mist-two {
-    display: none;
-  }
-
-  .mist-one {
-    top: 48%;
-    right: -18%;
-    opacity: 0.08;
-  }
-
   .hero-copy {
     max-width: 720px;
   }
@@ -2222,16 +2068,6 @@ section[id] {
     width: 100%;
   }
 
-  .portrait-orbit {
-    inset: -0.8rem 0.8rem 2rem -0.5rem;
-  }
-
-  .portrait-status {
-    right: 0.65rem;
-    bottom: 4.5rem;
-    min-width: 160px;
-  }
-
   .hero-portrait figcaption {
     flex-direction: column;
     gap: 0.25rem;
@@ -2363,11 +2199,6 @@ section[id] {
     animation: none;
   }
 
-  .mist {
-    animation: none;
-  }
-
-  [data-parallax-layer],
   [data-tilt],
   .magnetic-action {
     transform: none;
