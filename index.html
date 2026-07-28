@@ -92,6 +92,7 @@
         class="hero section-shell"
         id="home"
         aria-labelledby="hero-title"
+        data-parallax-root
       >
         <div class="hero-copy" data-reveal="hero">
           <div class="section-kicker">
@@ -101,15 +102,14 @@
           <p class="hero-intro">Hello — I’m Isfaq.</p>
           <h1 id="hero-title">Isfaq Hossain Ibon</h1>
           <p class="hero-role">CSE Student &amp; Aspiring Web Developer</p>
-          <p class="availability"><i aria-hidden="true"></i> Open to opportunities</p>
           <p class="hero-summary">
-            I build practical web applications while strengthening my JavaScript, frontend,
-            and full-stack development skills through real projects.
+            I build practical web applications and improve my JavaScript, frontend, and
+            full-stack skills through real projects.
           </p>
 
           <div class="hero-actions" aria-label="Primary actions">
             <a class="button button-primary magnetic-action" href="#projects">
-              View projects <span aria-hidden="true">↓</span>
+              View Projects <span aria-hidden="true">↘</span>
             </a>
             <a
               class="button button-secondary"
@@ -117,10 +117,10 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View resume <span aria-hidden="true">↗</span>
+              View Resume <span aria-hidden="true">↗</span>
             </a>
             <a class="hero-contact-link" href="#contact">
-              Contact me <span aria-hidden="true">↘</span>
+              Contact Me <span aria-hidden="true">↘</span>
             </a>
           </div>
 
@@ -153,8 +153,8 @@
           </div>
         </div>
 
-        <figure class="hero-portrait" data-reveal="hero">
-          <div class="portrait-frame">
+        <figure class="hero-portrait" data-reveal="media">
+          <div class="portrait-frame" data-parallax-layer="6">
             <img
               src="./assets/profile.png"
               alt="Isfaq Hossain Ibon wearing a navy suit"
@@ -164,9 +164,13 @@
               fetchpriority="high"
             />
           </div>
+          <div class="portrait-availability">
+            <span>Open to opportunities</span>
+            <strong>Internships and junior roles</strong>
+          </div>
           <figcaption>
-            <span>Computer Science &amp; Engineering</span>
-            <span>01 / Dhaka</span>
+            <span>CSE Student</span>
+            <span>Dhaka, Bangladesh</span>
           </figcaption>
         </figure>
       </section>
@@ -309,13 +313,9 @@
               loading="lazy"
               decoding="async"
             />
-            <span>Frontend prototype</span>
           </div>
           <div class="featured-copy">
-            <div class="project-heading-row">
-              <p class="project-label">01 — Featured web project</p>
-              <p class="project-status"><i aria-hidden="true"></i> In development</p>
-            </div>
+            <p class="project-label">01 — Featured web project</p>
             <h3>Orpon</h3>
             <p>
               A fundraising platform concept designed to make campaign discovery and giving
@@ -333,7 +333,7 @@
               </div>
               <div>
                 <dt>Current state</dt>
-                <dd>Working frontend prototype; no public live demo is claimed.</dd>
+                <dd>Interface concept shown in the current project materials; no public live demo is claimed.</dd>
               </div>
               <div>
                 <dt>Next</dt>
@@ -352,11 +352,8 @@
 
         <div class="project-grid">
           <article class="project-card project-card-compact" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">02 — DBMS project</p>
-              <p class="project-status"><i aria-hidden="true"></i> Prototype</p>
-            </div>
-            <div class="project-card-media" data-reveal="media" data-tilt>
+            <p class="project-label">02 — DBMS project</p>
+            <div class="project-card-media" data-reveal="media">
               <img
                 src="./assets/project-crimealert.png"
                 alt="Crime Alert interface showing community reporting, map, and safety features"
@@ -398,10 +395,7 @@
           </article>
 
           <article class="project-card project-card-wide" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">03 — Student productivity</p>
-              <p class="project-status"><i aria-hidden="true"></i> UI prototype</p>
-            </div>
+            <p class="project-label">03 — Student productivity</p>
             <div class="project-card-media" data-reveal="media">
               <img
                 src="./assets/project-login.png"
@@ -443,10 +437,7 @@
           </article>
 
           <article class="project-card project-card-wide" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">04 — Machine learning research</p>
-              <p class="project-status"><i aria-hidden="true"></i> Academic work</p>
-            </div>
+            <p class="project-label">04 — Machine learning research</p>
             <div class="project-card-media project-card-media-light" data-reveal="media">
               <img
                 src="./assets/project-fydp.png"
@@ -499,10 +490,8 @@
           </article>
 
           <article class="project-card project-card-compact project-card-muted" data-reveal>
-            <div class="project-card-top">
-              <p class="project-label">05 — Frontend reference</p>
-              <p class="project-status"><i aria-hidden="true"></i> Demo</p>
-            </div>
+            <p class="project-label">05 — Frontend reference</p>
+            <!-- Replace with a verified Thikana project screenshot when one is available. -->
             <div class="project-monogram" aria-hidden="true">THK</div>
             <h3>Thikana Frontend Demo</h3>
             <p>

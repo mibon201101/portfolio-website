@@ -7,6 +7,7 @@ const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 const sections = [...document.querySelectorAll("main section[id]")];
 const backToTop = document.querySelector(".back-to-top");
 const footer = document.querySelector(".site-footer");
+const hero = document.querySelector("[data-parallax-root]");
 const year = document.querySelector("#current-year");
 const revealItems = document.querySelectorAll("[data-reveal]");
 const accordionButtons = document.querySelectorAll(".project-details-toggle");
@@ -115,6 +116,11 @@ accordionButtons.forEach((button) => {
 });
 
 const resetPointerEffects = () => {
+  hero?.querySelectorAll("[data-parallax-layer]").forEach((item) => {
+    item.style.setProperty("--parallax-x", "0px");
+    item.style.setProperty("--parallax-y", "0px");
+  });
+
   document.querySelectorAll("[data-tilt]").forEach((item) => {
     item.style.setProperty("--tilt-x", "0deg");
     item.style.setProperty("--tilt-y", "0deg");
@@ -130,6 +136,35 @@ const enablePointerEffects = () => {
   if (!finePointer.matches || reducedMotion.matches) {
     resetPointerEffects();
     return;
+  }
+
+  if (hero && !hero.dataset.parallaxReady) {
+    hero.dataset.parallaxReady = "true";
+    let parallaxFrame;
+
+    hero.addEventListener("pointermove", (event) => {
+      if (!finePointer.matches || reducedMotion.matches || parallaxFrame) return;
+
+      parallaxFrame = window.requestAnimationFrame(() => {
+        const rect = hero.getBoundingClientRect();
+        const x = clamp((event.clientX - rect.left) / rect.width) - 0.5;
+        const y = clamp((event.clientY - rect.top) / rect.height) - 0.5;
+
+        hero.querySelectorAll("[data-parallax-layer]").forEach((item) => {
+          const depth = Number(item.dataset.parallaxLayer) || 6;
+          item.style.setProperty("--parallax-x", `${(x * depth).toFixed(2)}px`);
+          item.style.setProperty("--parallax-y", `${(y * depth * 0.6).toFixed(2)}px`);
+        });
+        parallaxFrame = undefined;
+      });
+    });
+
+    hero.addEventListener("pointerleave", () => {
+      hero.querySelectorAll("[data-parallax-layer]").forEach((item) => {
+        item.style.setProperty("--parallax-x", "0px");
+        item.style.setProperty("--parallax-y", "0px");
+      });
+    });
   }
 
   document.querySelectorAll("[data-tilt]").forEach((item) => {
